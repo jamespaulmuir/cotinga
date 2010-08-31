@@ -772,6 +772,11 @@ Collection:
       local: collection_id
       foreign: collection_id
       type: many
+    Items:
+      class: Item
+      local: collection_id
+      foreign: item_id
+      refClass: Collection2item
 
 
 Communities2item:

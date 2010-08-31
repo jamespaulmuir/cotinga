@@ -14,12 +14,32 @@ class communitiesActions extends sfActions
   {
     $this->communitys = Doctrine::getTable('Community')
       ->createQuery('a')
+      ->orderBy('upper(a.name)')
+      ->leftJoin('a.Community2communitys_ForChildComm c')
+      ->where('c.id IS NULL')
       ->execute();
   }
 
   public function executeShow(sfWebRequest $request)
   {
-    $this->community = Doctrine::getTable('Community')->find(array($request->getParameter('community_id')));
+    $community_id = $request->getParameter('community_id');
+
+    $this->community = Doctrine::getTable('Community')
+            ->createQuery('c')       
+            ->where('c.community_id = ?', $community_id)
+            ->leftJoin('c.Community2communitys_ForParentComm subs')
+            ->leftJoin('subs.Community_ForChildComm subc')
+            ->leftJoin('c.Bitstream logo')
+            ->fetchOne();
+
+    $this->collections = Doctrine::getTable('Collection')
+            ->createQuery('col')
+            ->leftJoin('col.Community2collections com2col')
+            ->where('com2col.community_id = ?', $community_id )
+            ->execute();
+
+    $this->subcommunities = $this->community->getCommunity2communitys_ForParentComm();
+    
     $this->forward404Unless($this->community);
   }
 

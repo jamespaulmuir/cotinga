@@ -1,39 +1,37 @@
-<table>
-  <tbody>
-    <tr>
-      <th>Community:</th>
-      <td><?php echo $community->getCommunityId() ?></td>
-    </tr>
-    <tr>
-      <th>Name:</th>
-      <td><?php echo $community->getName() ?></td>
-    </tr>
-    <tr>
-      <th>Short description:</th>
-      <td><?php echo $community->getShortDescription() ?></td>
-    </tr>
-    <tr>
-      <th>Introductory text:</th>
-      <td><?php echo $community->getIntroductoryText() ?></td>
-    </tr>
-    <tr>
-      <th>Logo bitstream:</th>
-      <td><?php echo $community->getLogoBitstreamId() ?></td>
-    </tr>
-    <tr>
-      <th>Copyright text:</th>
-      <td><?php echo $community->getCopyrightText() ?></td>
-    </tr>
-    <tr>
-      <th>Side bar text:</th>
-      <td><?php echo $community->getSideBarText() ?></td>
-    </tr>
-    <tr>
-      <th>Admin:</th>
-      <td><?php echo $community->getAdmin() ?></td>
-    </tr>
-  </tbody>
-</table>
+<h2><?php echo $community->getName() ?></h2>
+
+<?php if($community->Bitstream != null): ?>
+<img style="float:right; "src="https://kb.osu.edu/dspace/retrieve/<?php echo $community->Bitstream->bitstream_id; ?>"/>
+<?php endif; ?>
+<?php echo html_entity_decode($community->getIntroductoryText()) ?>
+
+<?php echo html_entity_decode($community->getSideBarText()) ?>
+
+
+
+<?php if(count($subcommunities) > 0): ?>
+<h3>Sub-communities within this community</h3>
+<ul>
+<?php foreach($subcommunities as $com2com): ?>
+    <li>
+    <a href="<?php echo url_for('communities/show').'/community_id/'.$com2com->child_comm_id; ?>">
+    <?php echo $com2com->Community_ForChildComm->name; ?></a>
+
+    </li>
+<?php endforeach; ?>
+</ul>
+<?php endif; ?>
+
+<?php if(count($collections) > 0): ?>
+<h3>Collections in this community</h3>
+<ul>
+<?php foreach($collections as $collection): ?>
+    <li><a href="<?php echo url_for('collections/show?collection_id='.$collection->getCollectionId()) ?>">
+        <?php echo $collection->getName() ?>
+    </a></li>
+<?php endforeach; ?>
+</ul>
+<?php endif; ?>
 
 <hr />
 

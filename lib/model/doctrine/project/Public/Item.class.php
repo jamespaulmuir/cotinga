@@ -12,4 +12,39 @@
  */
 class Item extends BaseItem
 {
+
+    protected $metadata = array();
+    protected $createdMap = false;
+
+    public function createMetadataMap()
+    {
+        foreach($this->getMetadatavalues() as $mv){
+
+            $name = 'dc.'.$mv->Metadatafieldregistry->element;
+            if($mv->Metadatafieldregistry->qualifier != null){
+                $name .= '.'.$mv->Metadatafieldregistry->qualifier;
+            }
+
+            $this->metadata[$name] = $mv->text_value;
+            
+        }
+        $this->createdMap = true;
+    }
+
+    public function getMetadata()
+    {
+        if(!$this->createdMap){
+            $this->createMetadataMap();
+        }
+        return $this->metadata;
+    }
+
+    public function  __get($name) {
+        if($name == 'metadata'){
+            return $this->getMetadata();
+        }
+        parent::__get($name);
+    }
+
+    
 }

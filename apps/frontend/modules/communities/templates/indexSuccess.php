@@ -1,21 +1,12 @@
-<h1>Communitys List</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Community</th>
-      <th>Name</th>
-      <th>Short description</th>
-      <th>Introductory text</th>
-      <th>Logo bitstream</th>
-      <th>Copyright text</th>
-      <th>Side bar text</th>
-      <th>Admin</th>
-    </tr>
-  </thead>
-  <tbody>
+<h1>Communities</h1>
+<ul class="list-detail">
     <?php foreach ($communitys as $community): ?>
-    <tr>
+<li><a href="<?php echo url_for('communities/show?community_id='.$community->getCommunityId()) ?>">
+        <?php echo $community->getName() ?>
+    </a>
+</li>
+
+   <!--  <tr>
       <td><a href="<?php echo url_for('communities/show?community_id='.$community->getCommunityId()) ?>"><?php echo $community->getCommunityId() ?></a></td>
       <td><?php echo $community->getName() ?></td>
       <td><?php echo $community->getShortDescription() ?></td>
@@ -24,9 +15,9 @@
       <td><?php echo $community->getCopyrightText() ?></td>
       <td><?php echo $community->getSideBarText() ?></td>
       <td><?php echo $community->getAdmin() ?></td>
-    </tr>
+    </tr> -->
     <?php endforeach; ?>
-  </tbody>
-</table>
+  
 
-  <a href="<?php echo url_for('communities/new') ?>">New</a>
+</ul>
+

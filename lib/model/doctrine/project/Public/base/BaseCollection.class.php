@@ -36,6 +36,7 @@ Doctrine_Manager::getInstance()->bindComponent('Collection', 'doctrine');
  * @property Doctrine_Collection $Workflowitems
  * @property Doctrine_Collection $HarvestedCollections
  * @property Doctrine_Collection $Workspaceitems
+ * @property Doctrine_Collection $Items
  * 
  * @method integer             getCollectionId()                  Returns the current record's "collection_id" value
  * @method string              getName()                          Returns the current record's "name" value
@@ -66,6 +67,7 @@ Doctrine_Manager::getInstance()->bindComponent('Collection', 'doctrine');
  * @method Doctrine_Collection getWorkflowitems()                 Returns the current record's "Workflowitems" collection
  * @method Doctrine_Collection getHarvestedCollections()          Returns the current record's "HarvestedCollections" collection
  * @method Doctrine_Collection getWorkspaceitems()                Returns the current record's "Workspaceitems" collection
+ * @method Doctrine_Collection getItems()                         Returns the current record's "Items" collection
  * @method Collection          setCollectionId()                  Sets the current record's "collection_id" value
  * @method Collection          setName()                          Sets the current record's "name" value
  * @method Collection          setShortDescription()              Sets the current record's "short_description" value
@@ -95,6 +97,7 @@ Doctrine_Manager::getInstance()->bindComponent('Collection', 'doctrine');
  * @method Collection          setWorkflowitems()                 Sets the current record's "Workflowitems" collection
  * @method Collection          setHarvestedCollections()          Sets the current record's "HarvestedCollections" collection
  * @method Collection          setWorkspaceitems()                Sets the current record's "Workspaceitems" collection
+ * @method Collection          setItems()                         Sets the current record's "Items" collection
  * 
  * @package    dspace
  * @subpackage model
@@ -285,5 +288,10 @@ abstract class BaseCollection extends BaseDoctrineRecord
         $this->hasMany('Workspaceitem as Workspaceitems', array(
              'local' => 'collection_id',
              'foreign' => 'collection_id'));
+
+        $this->hasMany('Item as Items', array(
+             'refClass' => 'Collection2item',
+             'local' => 'collection_id',
+             'foreign' => 'item_id'));
     }
 }
