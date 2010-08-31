@@ -12,5 +12,6 @@ class CommunityForm extends BaseCommunityForm
 {
   public function configure()
   {
+      unset($this['logo_bitstream_id']);
   }
 }

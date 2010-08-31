@@ -1,3 +1,3 @@
-<h1>Edit Public community item</h1>
+<h1>Edit Community</h1>
 
 <?php include_partial('form', array('form' => $form)) ?>

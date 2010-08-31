@@ -12,27 +12,27 @@ class communitiesActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->public_community_items = Doctrine::getTable('Public_Community_Item')
+    $this->communitys = Doctrine::getTable('Community')
       ->createQuery('a')
       ->execute();
   }
 
   public function executeShow(sfWebRequest $request)
   {
-    $this->public_community_item = Doctrine::getTable('Public_Community_Item')->find(array($request->getParameter('community_id')));
-    $this->forward404Unless($this->public_community_item);
+    $this->community = Doctrine::getTable('Community')->find(array($request->getParameter('community_id')));
+    $this->forward404Unless($this->community);
   }
 
   public function executeNew(sfWebRequest $request)
   {
-    $this->form = new Public_Community_ItemForm();
+    $this->form = new CommunityForm();
   }
 
   public function executeCreate(sfWebRequest $request)
   {
     $this->forward404Unless($request->isMethod(sfRequest::POST));
 
-    $this->form = new Public_Community_ItemForm();
+    $this->form = new CommunityForm();
 
     $this->processForm($request, $this->form);
 
@@ -41,15 +41,15 @@ class communitiesActions extends sfActions
 
   public function executeEdit(sfWebRequest $request)
   {
-    $this->forward404Unless($public_community_item = Doctrine::getTable('Public_Community_Item')->find(array($request->getParameter('community_id'))), sprintf('Object public_community_item does not exist (%s).', $request->getParameter('community_id')));
-    $this->form = new Public_Community_ItemForm($public_community_item);
+    $this->forward404Unless($community = Doctrine::getTable('Community')->find(array($request->getParameter('community_id'))), sprintf('Object community does not exist (%s).', $request->getParameter('community_id')));
+    $this->form = new CommunityForm($community);
   }
 
   public function executeUpdate(sfWebRequest $request)
   {
     $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-    $this->forward404Unless($public_community_item = Doctrine::getTable('Public_Community_Item')->find(array($request->getParameter('community_id'))), sprintf('Object public_community_item does not exist (%s).', $request->getParameter('community_id')));
-    $this->form = new Public_Community_ItemForm($public_community_item);
+    $this->forward404Unless($community = Doctrine::getTable('Community')->find(array($request->getParameter('community_id'))), sprintf('Object community does not exist (%s).', $request->getParameter('community_id')));
+    $this->form = new CommunityForm($community);
 
     $this->processForm($request, $this->form);
 
@@ -60,8 +60,8 @@ class communitiesActions extends sfActions
   {
     $request->checkCSRFProtection();
 
-    $this->forward404Unless($public_community_item = Doctrine::getTable('Public_Community_Item')->find(array($request->getParameter('community_id'))), sprintf('Object public_community_item does not exist (%s).', $request->getParameter('community_id')));
-    $public_community_item->delete();
+    $this->forward404Unless($community = Doctrine::getTable('Community')->find(array($request->getParameter('community_id'))), sprintf('Object community does not exist (%s).', $request->getParameter('community_id')));
+    $community->delete();
 
     $this->redirect('communities/index');
   }
@@ -71,9 +71,9 @@ class communitiesActions extends sfActions
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
-      $public_community_item = $form->save();
+      $community = $form->save();
 
-      $this->redirect('communities/edit?community_id='.$public_community_item->getCommunityId());
+      $this->redirect('communities/edit?community_id='.$community->getCommunityId());
     }
   }
 }
