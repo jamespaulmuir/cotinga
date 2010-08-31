@@ -1,0 +1,233 @@
+# sfPostgresDoctrinePlugin #
+
+The `sfPostgresDoctrinePlugin` is a symfony plugin that extends the sfDoctrinePlugin
+for Postgres database. 
+
+It gives you:
+
+  * ability to have a real inheritance
+    
+  * schemas menagement
+   
+  * enums and objects menagement
+  
+  * behaviors menagement
+  
+  * views menagement
+  
+  * plugin model management
+  
+  * ability to use custom record class for all Doctrine_Record objects
+
+## Installation ##
+
+  * Install the plugin (via a package)
+
+        symfony plugin:install sfPostgresDoctrinePlugin
+
+  * Install the plugin (via a Subversion checkout)
+  
+        svn co http//svn.symfony-project.com/plugins/sfPostgresDoctrinePlugin/trunk plugins/sfPostgresDoctrinePlugin
+  
+  * Publich config
+
+        symfony plugin:publish-configs
+
+  * Activate the plugin in the `config/ProjectConfiguration.class.php`
+  
+        [php]
+        class ProjectConfiguration extends sfProjectConfiguration
+        {
+          public function setup()
+          {
+            $this->enablePlugins(array(
+              'sfDoctrinePlugin', 
+              'sfPostgresDoctrinePlugin',
+              '...'
+            ));
+          }
+        }
+        
+## Schemas menagement
+
+  * You always must tell in tableName attribute fullname of the table, which is
+    schemaName.tableName and set the packege attribute to schemaName.Entities
+    
+    example:       
+     
+    	Vehicle:
+  		  	tableName: public.vehicles
+  		  	package: Public.Entities
+  			...
+  			
+  		Car:
+  			tableName: car.infos
+  			package: Car.Entities
+  			...
+  			
+  * When you generating schema and model you do it the same way like for the sfDoctrinePlugin.
+  	The relations, inheritances and enums are building automatically, also when you write behaviors condition
+  	in config/sfPostgresDoctrinePlugin/behaviors.yml the behaviors are binding to the schema and the model.
+  	
+  	The naming of the model is automatically genereted. The main format is:
+  	
+  	[SchemaName]_[CanonicalizedTableName]_Item
+  	
+  	In relations:
+  	
+  	[SchemaName]_[CanonicalizedTableName]_Item   / to one
+  	
+  	[SchemaName]_[CanonicalizedTableName]_Items  / to many
+  	
+  	In relations when is more then one for the same table the format of the alias is:
+  	
+  	[SchemaName]_[CanonicalizedTableName]_Item_For[CanonicalizedColumnName]  / to one
+  	
+  	[SchemaName]_[CanonicalizedTableName]_Items_For[CanonicalizedColumnName] / to many  	
+  	
+  *	When you building db you do it the same way like for the sfDoctrinePlugin.  	                
+ 	The creation of the schemas, inheritance, relations and object and enums defined in config/sfPostgresDoctrinePlugin/types.yml files is automatical.
+ 	If in model or schemas are some views you must put them in config/sfPostgresDoctrinePlugin/views.yml file to ommit generation process for them.                  
+
+## Inheritance
+  * in schema.yml file the only information is
+  
+		inheritance:
+        	extends: #ParentModelName#  	
+                          
+    example:     
+       
+    	Vehicle:
+  		  	tableName: public.vehicles
+  		  	package: Public.Entities
+  			...
+  				
+  		Bikes:
+  			tableName: public.bikes
+  			package: Public.Entities
+  			inheritance:
+                extends: Vehicle
+            ...  	
+        
+        Car:
+            tableName: car.infos
+            package: Car.Entities
+            inheritence:
+            	extends: Vehicle
+            ...
+            
+        Truck:
+            tableName: public.trucks
+            package: Public.Entities 
+            inheritence:
+            	extends: Car
+            ...
+            
+## Enums and objects menagement  
+  
+  * In config/sfPostgresDoctrinePlugin/types.yml are definition of enums and objects, 
+    which are considered in build-sql task:
+  
+  	example:  	  
+  		
+  		public.audit:       #full name of object (schemaName.objectName  		
+	  		body: >         #sql body of the object
+	    		creator text,
+	    		createtime timestamp with time zone,
+	    		updator text,
+	    		updatetime timestamp with time zone    		
+	  		tables: all     #to which tables check if we generating db 
+	  		                #may be an array with full names of the tables [schemaName1.tableName1, schemaName2.tableName2] 
+	  		params:
+	    		all: audit  #columns name condition 
+	    		            #may be an array of columns
+	    		schemaName1.tableName1:
+	    			- anotheraudit
+	    			- mainaudit
+	    		schemaName2.tableName2: [audit_a, audit_b]
+  
+		types.cars: 	#for enums all above is the same 
+	  		type: enum  #type attribute is a only difference
+			body: >
+			    'car',
+			    'truck',
+			    'bus'			    
+			tables: car.infos
+			params:
+			    car.infos: vehicle_type
+           
+## Behaviors menagement
+
+  * In plugins/sfPostgresDoctrinePlugin/config/behaviors.yml are definition of behaviors, 
+    which are considered in building model and schema tasks:
+
+	example:
+	
+        Audit: 	#name of the behavior
+  			tableName: all #to which tables check if we building model and schema
+  			               #may be an array with full names of the tables
+  			condition: 
+    			columns: audit # behavior are binding when table has this column
+  			params:
+    			all:
+      				info: 'some infos for all'
+      			car.infos:
+      				info: 'some infos only for car.infos table
+
+		Versioning:
+  			tableName: all
+  			condition:
+    			columns: [current_from, current_to]  # behavior are binding when table has this two columns
+  			params: 
+    			all:
+      				column_from: current_from
+      				column_to: current_to 
+      				
+        Privilege:
+  			tableName: all  # all table
+			exclusions:     # except this collection
+			  	- 'catalogs.*'
+			  	- 'users.*'
+			  	- 'public.*'
+			  	- books.novels
+			condition:      # without (!) and with columns   
+				columns: ['!current_from', '!current_to', version]
+			  params:
+			    all:          
+			      operations: # for all permit insert and forbid update
+			        insert: permit
+			        update: forbidden
+			    sales.item:
+			      operations: # for one permit conditional update
+			        update: 
+			          permit: internal_name #only this column can be update
+			    '*.common*':   # for this pattern forbidden unblocked insert -> (params:all) 
+			      operations:
+			        insert: forbidden
+			            
+## Views menagement
+
+  * Command
+  
+  		symfony doctrine:build-views-schema
+  		
+  	generate schema for views in config/genereted_views.yml
+  	
+  	For example next thing to do is copy this file to directory config/doctrine and build model
+  	
+## Plugin Model management
+
+  * Generating model from plugin's schema.yml file make for every plugin custom package in lib/model/directory/plugins with name of the plugin, if no tableName attribute is defined in schema.yml for plugin.	
+
+  * Generating sql for plugin's model process make for every plugin custom schema in db with name of the plugin, if no tableName attribute is defined in schema.yml for plugin.
+  
+## Custom Recor Class
+
+  * `BaseDoctrineRecord.class.php` in lib/model/doctrine catalog give you ability to override or implement custom method for all object in you model.
+  	
+## TODO  
+  
+  * Postgres array type implementing to special behavior (for totally automated process)
+  
+  * Custom type implementing to special behavior (for totally automated process)
+  

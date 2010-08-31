@@ -1,0 +1,2116 @@
+Public_Bi2Dis_Item:
+  connection: doctrine
+  tableName: public.bi_2_dis
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    distinct_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    authority:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    value:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    sort_value:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Bi2Dmap_Items:
+      class: Public_Bi2Dmap_Item
+      local: distinct_id
+      foreign: distinct_id
+      type: many
+
+
+Public_Bi2Dmap_Item:
+  connection: doctrine
+  tableName: public.bi_2_dmap
+  columns:
+    map_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    distinct_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Bi2Dis_Item:
+      local: distinct_id
+      foreign: distinct_id
+      type: one
+    Public_Item_Item:
+      local: item_id
+      foreign: item_id
+      type: one
+
+
+Public_Bi4Dis_Item:
+  connection: doctrine
+  tableName: public.bi_4_dis
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    distinct_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    authority:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    value:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    sort_value:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Bi4Dmap_Items:
+      class: Public_Bi4Dmap_Item
+      local: distinct_id
+      foreign: distinct_id
+      type: many
+
+
+Public_Bi4Dmap_Item:
+  connection: doctrine
+  tableName: public.bi_4_dmap
+  columns:
+    map_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    distinct_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Bi4Dis_Item:
+      local: distinct_id
+      foreign: distinct_id
+      type: one
+    Public_Item_Item:
+      local: item_id
+      foreign: item_id
+      type: one
+
+
+Public_BiItem_Item:
+  connection: doctrine
+  tableName: public.bi_item
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    sort_3:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    sort_2:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    sort_1:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Item_Item:
+      local: item_id
+      foreign: item_id
+      type: one
+
+
+Public_BiWithdrawn_Item:
+  connection: doctrine
+  tableName: public.bi_withdrawn
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    sort_3:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    sort_2:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    sort_1:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Item_Item:
+      local: item_id
+      foreign: item_id
+      type: one
+
+
+Public_Bitstream_Item:
+  connection: doctrine
+  tableName: public.bitstream
+  columns:
+    bitstream_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    bitstream_format_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    name:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    checksum:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    checksum_algorithm:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    description:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    user_format_description:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    source:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    internal_id:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    deleted:
+      type: boolean(1)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    store_number:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    sequence_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    size_bytes:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Bitstreamformatregistry_Item:
+      local: bitstream_format_id
+      foreign: bitstream_format_id
+      type: one
+    Public_Bundle_Items:
+      class: Public_Bundle_Item
+      local: bitstream_id
+      foreign: primary_bitstream_id
+      type: many
+    Public_MostRecentChecksum_Items:
+      class: Public_MostRecentChecksum_Item
+      local: bitstream_id
+      foreign: bitstream_id
+      type: many
+    Public_Bundle2bitstream_Items:
+      class: Public_Bundle2bitstream_Item
+      local: bitstream_id
+      foreign: bitstream_id
+      type: many
+    Public_Collection_Items:
+      class: Public_Collection_Item
+      local: bitstream_id
+      foreign: logo_bitstream_id
+      type: many
+    Public_Community_Items:
+      class: Public_Community_Item
+      local: bitstream_id
+      foreign: logo_bitstream_id
+      type: many
+
+
+Public_Bitstreamformatregistry_Item:
+  connection: doctrine
+  tableName: public.bitstreamformatregistry
+  columns:
+    bitstream_format_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    mimetype:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    short_description:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    description:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    support_level:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    internal:
+      type: boolean(1)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Fileextension_Items:
+      class: Public_Fileextension_Item
+      local: bitstream_format_id
+      foreign: bitstream_format_id
+      type: many
+    Public_Bitstream_Items:
+      class: Public_Bitstream_Item
+      local: bitstream_format_id
+      foreign: bitstream_format_id
+      type: many
+
+
+Public_Bundle2bitstream_Item:
+  connection: doctrine
+  tableName: public.bundle2bitstream
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    bundle_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    bitstream_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Bundle_Item:
+      local: bundle_id
+      foreign: bundle_id
+      type: one
+    Public_Bitstream_Item:
+      local: bitstream_id
+      foreign: bitstream_id
+      type: one
+
+
+Public_Bundle_Item:
+  connection: doctrine
+  tableName: public.bundle
+  columns:
+    bundle_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    name:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    primary_bitstream_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Bitstream_Item:
+      local: primary_bitstream_id
+      foreign: bitstream_id
+      type: one
+    Public_Bundle2bitstream_Items:
+      class: Public_Bundle2bitstream_Item
+      local: bundle_id
+      foreign: bundle_id
+      type: many
+    Public_Item2bundle_Items:
+      class: Public_Item2bundle_Item
+      local: bundle_id
+      foreign: bundle_id
+      type: many
+
+
+Public_ChecksumHistory_Item:
+  connection: doctrine
+  tableName: public.checksum_history
+  columns:
+    check_id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      sequence: public.checksum_history_check_id
+    bitstream_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    process_start_date:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    process_end_date:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    checksum_expected:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    checksum_calculated:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    result:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_ChecksumResults_Item:
+      local: result
+      foreign: result_code
+      type: one
+
+
+Public_ChecksumResults_Item:
+  connection: doctrine
+  tableName: public.checksum_results
+  columns:
+    result_code:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: true
+    result_description:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_MostRecentChecksum_Items:
+      class: Public_MostRecentChecksum_Item
+      local: result_code
+      foreign: result
+      type: many
+    Public_ChecksumHistory_Items:
+      class: Public_ChecksumHistory_Item
+      local: result_code
+      foreign: result
+      type: many
+
+
+Public_Collection2item_Item:
+  connection: doctrine
+  tableName: public.collection2item
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    collection_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Collection_Item:
+      local: collection_id
+      foreign: collection_id
+      type: one
+    Public_Item_Item_ForItem:
+      class: Public_Item_Item
+      local: item_id
+      foreign: item_id
+      type: one
+
+
+Public_CollectionItemCount_Item:
+  connection: doctrine
+  tableName: public.collection_item_count
+  columns:
+    collection_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    count:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Collection_Item:
+      local: collection_id
+      foreign: collection_id
+      type: one
+
+
+Public_Collection_Item:
+  connection: doctrine
+  tableName: public.collection
+  columns:
+    collection_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    name:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    short_description:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    introductory_text:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    logo_bitstream_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    template_item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    provenance_description:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    license:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    copyright_text:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    side_bar_text:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    workflow_step_1:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    workflow_step_2:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    workflow_step_3:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    submitter:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    admin:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Bitstream_Item:
+      local: logo_bitstream_id
+      foreign: bitstream_id
+      type: one
+    Public_Item_Item:
+      local: template_item_id
+      foreign: item_id
+      type: one
+    Public_Epersongroup_Item_ForWorkflowStep1:
+      class: Public_Epersongroup_Item
+      local: workflow_step_1
+      foreign: eperson_group_id
+      type: one
+    Public_Epersongroup_Item_ForWorkflowStep2:
+      class: Public_Epersongroup_Item
+      local: workflow_step_2
+      foreign: eperson_group_id
+      type: one
+    Public_Epersongroup_Item_ForWorkflowStep3:
+      class: Public_Epersongroup_Item
+      local: workflow_step_3
+      foreign: eperson_group_id
+      type: one
+    Public_Epersongroup_Item_ForAdmin:
+      class: Public_Epersongroup_Item
+      local: admin
+      foreign: eperson_group_id
+      type: one
+    Public_Epersongroup_Item_ForSubmitter:
+      class: Public_Epersongroup_Item
+      local: submitter
+      foreign: eperson_group_id
+      type: one
+    Public_Subscription_Items:
+      class: Public_Subscription_Item
+      local: collection_id
+      foreign: collection_id
+      type: many
+    Public_Community2collection_Items:
+      class: Public_Community2collection_Item
+      local: collection_id
+      foreign: collection_id
+      type: many
+    Public_Collection2item_Items:
+      class: Public_Collection2item_Item
+      local: collection_id
+      foreign: collection_id
+      type: many
+    Public_CollectionItemCount_Items:
+      class: Public_CollectionItemCount_Item
+      local: collection_id
+      foreign: collection_id
+      type: many
+    Public_Workflowitem_Items:
+      class: Public_Workflowitem_Item
+      local: collection_id
+      foreign: collection_id
+      type: many
+    Public_HarvestedCollection_Items:
+      class: Public_HarvestedCollection_Item
+      local: collection_id
+      foreign: collection_id
+      type: many
+    Public_Workspaceitem_Items:
+      class: Public_Workspaceitem_Item
+      local: collection_id
+      foreign: collection_id
+      type: many
+
+
+Public_Communities2item_Item:
+  connection: doctrine
+  tableName: public.communities2item
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    community_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Community_Item:
+      local: community_id
+      foreign: community_id
+      type: one
+    Public_Item_Item:
+      local: item_id
+      foreign: item_id
+      type: one
+
+
+Public_Community2collection_Item:
+  connection: doctrine
+  tableName: public.community2collection
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    community_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    collection_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Community_Item:
+      local: community_id
+      foreign: community_id
+      type: one
+    Public_Collection_Item_ForCollection:
+      class: Public_Collection_Item
+      local: collection_id
+      foreign: collection_id
+      type: one
+
+
+Public_Community2community_Item:
+  connection: doctrine
+  tableName: public.community2community
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    parent_comm_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    child_comm_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Community_Item_ForParentComm:
+      class: Public_Community_Item
+      local: parent_comm_id
+      foreign: community_id
+      type: one
+    Public_Community_Item_ForChildComm:
+      class: Public_Community_Item
+      local: child_comm_id
+      foreign: community_id
+      type: one
+
+
+Public_CommunityItemCount_Item:
+  connection: doctrine
+  tableName: public.community_item_count
+  columns:
+    community_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    count:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Community_Item:
+      local: community_id
+      foreign: community_id
+      type: one
+
+
+Public_Community_Item:
+  connection: doctrine
+  tableName: public.community
+  columns:
+    community_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    name:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    short_description:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    introductory_text:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    logo_bitstream_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    copyright_text:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    side_bar_text:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    admin:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Bitstream_Item:
+      local: logo_bitstream_id
+      foreign: bitstream_id
+      type: one
+    Public_Epersongroup_Item:
+      local: admin
+      foreign: eperson_group_id
+      type: one
+    Public_Community2collection_Items:
+      class: Public_Community2collection_Item
+      local: community_id
+      foreign: community_id
+      type: many
+    Public_Community2community_Items_ForParentComm:
+      class: Public_Community2community_Item
+      local: community_id
+      foreign: parent_comm_id
+      type: many
+    Public_Community2community_Items_ForChildComm:
+      class: Public_Community2community_Item
+      local: community_id
+      foreign: child_comm_id
+      type: many
+    Public_CommunityItemCount_Items:
+      class: Public_CommunityItemCount_Item
+      local: community_id
+      foreign: community_id
+      type: many
+    Public_Communities2item_Items:
+      class: Public_Communities2item_Item
+      local: community_id
+      foreign: community_id
+      type: many
+
+
+Public_Eperson_Item:
+  connection: doctrine
+  tableName: public.eperson
+  columns:
+    eperson_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    email:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    password:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    firstname:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    lastname:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    can_log_in:
+      type: boolean(1)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    require_certificate:
+      type: boolean(1)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    self_registered:
+      type: boolean(1)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    last_active:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    sub_frequency:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    phone:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    netid:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    language:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Subscription_Items:
+      class: Public_Subscription_Item
+      local: eperson_id
+      foreign: eperson_id
+      type: many
+    Public_Resourcepolicy_Items:
+      class: Public_Resourcepolicy_Item
+      local: eperson_id
+      foreign: eperson_id
+      type: many
+    Public_Workflowitem_Items:
+      class: Public_Workflowitem_Item
+      local: eperson_id
+      foreign: owner
+      type: many
+    Public_Epersongroup2eperson_Items:
+      class: Public_Epersongroup2eperson_Item
+      local: eperson_id
+      foreign: eperson_id
+      type: many
+    Public_Tasklistitem_Items:
+      class: Public_Tasklistitem_Item
+      local: eperson_id
+      foreign: eperson_id
+      type: many
+    Public_Item_Items:
+      class: Public_Item_Item
+      local: eperson_id
+      foreign: submitter_id
+      type: many
+
+
+Public_Epersongroup2eperson_Item:
+  connection: doctrine
+  tableName: public.epersongroup2eperson
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    eperson_group_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    eperson_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Epersongroup_Item:
+      local: eperson_group_id
+      foreign: eperson_group_id
+      type: one
+    Public_Eperson_Item:
+      local: eperson_id
+      foreign: eperson_id
+      type: one
+
+
+Public_Epersongroup2workspaceitem_Item:
+  connection: doctrine
+  tableName: public.epersongroup2workspaceitem
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    eperson_group_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    workspace_item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+
+
+Public_Epersongroup_Item:
+  connection: doctrine
+  tableName: public.epersongroup
+  columns:
+    eperson_group_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    name:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Group2group_Items_ForChild:
+      class: Public_Group2group_Item
+      local: eperson_group_id
+      foreign: child_id
+      type: many
+    Public_Group2group_Items_ForParent:
+      class: Public_Group2group_Item
+      local: eperson_group_id
+      foreign: parent_id
+      type: many
+    Public_Collection_Items_ForWorkflowStep1:
+      class: Public_Collection_Item
+      local: eperson_group_id
+      foreign: workflow_step_1
+      type: many
+    Public_Collection_Items_ForWorkflowStep2:
+      class: Public_Collection_Item
+      local: eperson_group_id
+      foreign: workflow_step_2
+      type: many
+    Public_Collection_Items_ForWorkflowStep3:
+      class: Public_Collection_Item
+      local: eperson_group_id
+      foreign: workflow_step_3
+      type: many
+    Public_Collection_Items_ForAdmin:
+      class: Public_Collection_Item
+      local: eperson_group_id
+      foreign: admin
+      type: many
+    Public_Collection_Items_ForSubmitter:
+      class: Public_Collection_Item
+      local: eperson_group_id
+      foreign: submitter
+      type: many
+    Public_Resourcepolicy_Items:
+      class: Public_Resourcepolicy_Item
+      local: eperson_group_id
+      foreign: epersongroup_id
+      type: many
+    Public_Group2groupcache_Items_ForChild:
+      class: Public_Group2groupcache_Item
+      local: eperson_group_id
+      foreign: child_id
+      type: many
+    Public_Group2groupcache_Items_ForParent:
+      class: Public_Group2groupcache_Item
+      local: eperson_group_id
+      foreign: parent_id
+      type: many
+    Public_Community_Items:
+      class: Public_Community_Item
+      local: eperson_group_id
+      foreign: admin
+      type: many
+    Public_Epersongroup2eperson_Items:
+      class: Public_Epersongroup2eperson_Item
+      local: eperson_group_id
+      foreign: eperson_group_id
+      type: many
+
+
+Public_Fileextension_Item:
+  connection: doctrine
+  tableName: public.fileextension
+  columns:
+    file_extension_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    bitstream_format_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    extension:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Bitstreamformatregistry_Item:
+      local: bitstream_format_id
+      foreign: bitstream_format_id
+      type: one
+
+
+Public_Group2group_Item:
+  connection: doctrine
+  tableName: public.group2group
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    parent_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    child_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Epersongroup_Item_ForChild:
+      class: Public_Epersongroup_Item
+      local: child_id
+      foreign: eperson_group_id
+      type: one
+    Public_Epersongroup_Item_ForParent:
+      class: Public_Epersongroup_Item
+      local: parent_id
+      foreign: eperson_group_id
+      type: one
+
+
+Public_Group2groupcache_Item:
+  connection: doctrine
+  tableName: public.group2groupcache
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    parent_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    child_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Epersongroup_Item_ForChild:
+      class: Public_Epersongroup_Item
+      local: child_id
+      foreign: eperson_group_id
+      type: one
+    Public_Epersongroup_Item_ForParent:
+      class: Public_Epersongroup_Item
+      local: parent_id
+      foreign: eperson_group_id
+      type: one
+
+
+Public_Handle_Item:
+  connection: doctrine
+  tableName: public.handle
+  columns:
+    handle_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    handle:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    resource_type_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    resource_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+
+
+Public_HarvestedCollection_Item:
+  connection: doctrine
+  tableName: public.harvested_collection
+  columns:
+    collection_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    harvest_type:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    oai_source:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    oai_set_id:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    harvest_message:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    metadata_config_id:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    harvest_status:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    harvest_start_time:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    last_harvested:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+  package: Public.Entities
+  relations:
+    Public_Collection_Item:
+      local: collection_id
+      foreign: collection_id
+      type: one
+
+
+Public_HarvestedItem_Item:
+  connection: doctrine
+  tableName: public.harvested_item
+  columns:
+    item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    last_harvested:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    oai_id:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+  package: Public.Entities
+  relations:
+    Public_Item_Item:
+      local: item_id
+      foreign: item_id
+      type: one
+
+
+Public_Item2bundle_Item:
+  connection: doctrine
+  tableName: public.item2bundle
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    bundle_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Item_Item:
+      local: item_id
+      foreign: item_id
+      type: one
+    Public_Bundle_Item:
+      local: bundle_id
+      foreign: bundle_id
+      type: one
+
+
+Public_Item_Item:
+  connection: doctrine
+  tableName: public.item
+  columns:
+    item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    submitter_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    in_archive:
+      type: boolean(1)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    withdrawn:
+      type: boolean(1)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    owning_collection:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    last_modified:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Eperson_Item:
+      local: submitter_id
+      foreign: eperson_id
+      type: one
+    Public_BiItem_Items:
+      class: Public_BiItem_Item
+      local: item_id
+      foreign: item_id
+      type: many
+    Public_HarvestedItem_Items:
+      class: Public_HarvestedItem_Item
+      local: item_id
+      foreign: item_id
+      type: many
+    Public_BiWithdrawn_Items:
+      class: Public_BiWithdrawn_Item
+      local: item_id
+      foreign: item_id
+      type: many
+    Public_Bi2Dmap_Items:
+      class: Public_Bi2Dmap_Item
+      local: item_id
+      foreign: item_id
+      type: many
+    Public_Collection_Items:
+      class: Public_Collection_Item
+      local: item_id
+      foreign: template_item_id
+      type: many
+    Public_Item2bundle_Items:
+      class: Public_Item2bundle_Item
+      local: item_id
+      foreign: item_id
+      type: many
+    Public_Collection2item_Items:
+      class: Public_Collection2item_Item
+      local: item_id
+      foreign: item_id
+      type: many
+    Public_Metadatavalue_Items:
+      class: Public_Metadatavalue_Item
+      local: item_id
+      foreign: item_id
+      type: many
+    Public_Bi4Dmap_Items:
+      class: Public_Bi4Dmap_Item
+      local: item_id
+      foreign: item_id
+      type: many
+    Public_Workflowitem_Items:
+      class: Public_Workflowitem_Item
+      local: item_id
+      foreign: item_id
+      type: many
+    Public_Communities2item_Items:
+      class: Public_Communities2item_Item
+      local: item_id
+      foreign: item_id
+      type: many
+    Public_Workspaceitem_Items:
+      class: Public_Workspaceitem_Item
+      local: item_id
+      foreign: item_id
+      type: many
+
+
+Public_Metadatafieldregistry_Item:
+  connection: doctrine
+  tableName: public.metadatafieldregistry
+  columns:
+    metadata_field_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    metadata_schema_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    element:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    qualifier:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    scope_note:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Metadataschemaregistry_Item:
+      local: metadata_schema_id
+      foreign: metadata_schema_id
+      type: one
+    Public_Metadatavalue_Items:
+      class: Public_Metadatavalue_Item
+      local: metadata_field_id
+      foreign: metadata_field_id
+      type: many
+
+
+Public_Metadataschemaregistry_Item:
+  connection: doctrine
+  tableName: public.metadataschemaregistry
+  columns:
+    metadata_schema_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    namespace:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    short_id:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Metadatafieldregistry_Items:
+      class: Public_Metadatafieldregistry_Item
+      local: metadata_schema_id
+      foreign: metadata_schema_id
+      type: many
+
+
+Public_Metadatavalue_Item:
+  connection: doctrine
+  tableName: public.metadatavalue
+  columns:
+    metadata_value_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    metadata_field_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    text_value:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    text_lang:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    place:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    authority:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    confidence:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      default: (-1)
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Item_Item:
+      local: item_id
+      foreign: item_id
+      type: one
+    Public_Metadatafieldregistry_Item:
+      local: metadata_field_id
+      foreign: metadata_field_id
+      type: one
+
+
+Public_MostRecentChecksum_Item:
+  connection: doctrine
+  tableName: public.most_recent_checksum
+  columns:
+    bitstream_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    to_be_processed:
+      type: boolean(1)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    expected_checksum:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    current_checksum:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    last_process_start_date:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    last_process_end_date:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    checksum_algorithm:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    matched_prev_checksum:
+      type: boolean(1)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    result:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Bitstream_Item:
+      local: bitstream_id
+      foreign: bitstream_id
+      type: one
+    Public_ChecksumResults_Item:
+      local: result
+      foreign: result_code
+      type: one
+
+
+Public_Registrationdata_Item:
+  connection: doctrine
+  tableName: public.registrationdata
+  columns:
+    registrationdata_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    email:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    token:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    expires:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+
+
+Public_Resourcepolicy_Item:
+  connection: doctrine
+  tableName: public.resourcepolicy
+  columns:
+    policy_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    resource_type_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    resource_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    action_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    eperson_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    epersongroup_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    start_date:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    end_date:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Eperson_Item:
+      local: eperson_id
+      foreign: eperson_id
+      type: one
+    Public_Epersongroup_Item:
+      local: epersongroup_id
+      foreign: eperson_group_id
+      type: one
+
+
+Public_Subscription_Item:
+  connection: doctrine
+  tableName: public.subscription
+  columns:
+    subscription_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    eperson_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    collection_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Eperson_Item:
+      local: eperson_id
+      foreign: eperson_id
+      type: one
+    Public_Collection_Item:
+      local: collection_id
+      foreign: collection_id
+      type: one
+
+
+Public_Tasklistitem_Item:
+  connection: doctrine
+  tableName: public.tasklistitem
+  columns:
+    tasklist_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    eperson_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    workflow_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Eperson_Item:
+      local: eperson_id
+      foreign: eperson_id
+      type: one
+    Public_Workflowitem_Item:
+      local: workflow_id
+      foreign: workflow_id
+      type: one
+
+
+Public_Workflowitem_Item:
+  connection: doctrine
+  tableName: public.workflowitem
+  columns:
+    workflow_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    collection_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    state:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    owner:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    multiple_titles:
+      type: boolean(1)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    published_before:
+      type: boolean(1)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    multiple_files:
+      type: boolean(1)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Item_Item:
+      local: item_id
+      foreign: item_id
+      type: one
+    Public_Collection_Item:
+      local: collection_id
+      foreign: collection_id
+      type: one
+    Public_Eperson_Item:
+      local: owner
+      foreign: eperson_id
+      type: one
+    Public_Tasklistitem_Items:
+      class: Public_Tasklistitem_Item
+      local: workflow_id
+      foreign: workflow_id
+      type: many
+
+
+Public_Workspaceitem_Item:
+  connection: doctrine
+  tableName: public.workspaceitem
+  columns:
+    workspace_item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+    item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    collection_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    multiple_titles:
+      type: boolean(1)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    published_before:
+      type: boolean(1)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    multiple_files:
+      type: boolean(1)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    stage_reached:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    page_reached:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  package: Public.Entities
+  relations:
+    Public_Item_Item:
+      local: item_id
+      foreign: item_id
+      type: one
+    Public_Collection_Item:
+      local: collection_id
+      foreign: collection_id
+      type: one

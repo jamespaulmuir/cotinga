@@ -8,5 +8,19 @@ class ProjectConfiguration extends sfProjectConfiguration
   public function setup()
   {
     $this->enablePlugins('sfDoctrinePlugin');
+    $this->enablePlugins('sfPostgresDoctrinePlugin');
+
+
+    
+	
   }
+
+  public function configureDoctrine(Doctrine_Manager $manager)
+  {
+    $manager->setAttribute(
+    Doctrine::ATTR_AUTO_ACCESSOR_OVERRIDE,
+    false
+);
+  }
+
 }

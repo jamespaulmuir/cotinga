@@ -1,0 +1,18 @@
+#Audit:
+#  tableName: all
+#  condition: 
+#    columns: audit
+#  params:
+#    all:
+#      info: 'some infos for all'
+#    car.infos:
+#      info: 'some infos only for car.infos table
+
+#Versioning:
+#  tableName: all
+#  condition:
+#    columns: [current_from, current_to]  
+#  params: 
+#    all:
+#      column_from: current_from
+#      column_to: current_to 

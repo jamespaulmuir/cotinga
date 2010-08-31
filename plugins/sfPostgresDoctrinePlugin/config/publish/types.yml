@@ -1,0 +1,19 @@
+#public.audit:
+#  body: >
+#    creator text,
+#    createtime timestamp with time zone,
+#    updator text,
+#    updatetime timestamp with time zone,
+#  tables: all
+#  params:
+#    all: audit   
+  
+#types.cars: 	
+#  type: enum  #type attribute is a only difference
+#  body: >
+#    'car',
+#    'truck',
+#    'bus'			    
+#  tables: car.infos
+#  params:
+#    car.infos: vehicle_type
