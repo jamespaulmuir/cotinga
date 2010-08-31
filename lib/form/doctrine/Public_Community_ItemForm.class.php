@@ -12,6 +12,6 @@ class Public_Community_ItemForm extends BasePublic_Community_ItemForm
 {
   public function configure()
   {
-      unset($this->logo_bitstream_id);
+      unset($this['logo_bitstream_id']);
   }
 }
