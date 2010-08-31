@@ -1,6 +1,6 @@
 generator:
   class: sfRestGenerator
   param:
-    model_class: Community
+    model_class: Item
     theme: api
 ##CONFIG##

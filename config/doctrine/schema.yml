@@ -1,4 +1,4 @@
-Public_Bi2Dis_Item:
+Bi2Dis:
   connection: doctrine
   tableName: public.bi_2_dis
   columns:
@@ -33,14 +33,14 @@ Public_Bi2Dis_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Bi2Dmap_Items:
-      class: Public_Bi2Dmap_Item
+    Bi2Dmaps:
+      class: Bi2Dmap
       local: distinct_id
       foreign: distinct_id
       type: many
 
 
-Public_Bi2Dmap_Item:
+Bi2Dmap:
   connection: doctrine
   tableName: public.bi_2_dmap
   columns:
@@ -63,17 +63,17 @@ Public_Bi2Dmap_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Bi2Dis_Item:
+    Bi2Dis:
       local: distinct_id
       foreign: distinct_id
       type: one
-    Public_Item_Item:
+    Item:
       local: item_id
       foreign: item_id
       type: one
 
 
-Public_Bi4Dis_Item:
+Bi4Dis:
   connection: doctrine
   tableName: public.bi_4_dis
   columns:
@@ -108,14 +108,14 @@ Public_Bi4Dis_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Bi4Dmap_Items:
-      class: Public_Bi4Dmap_Item
+    Bi4Dmaps:
+      class: Bi4Dmap
       local: distinct_id
       foreign: distinct_id
       type: many
 
 
-Public_Bi4Dmap_Item:
+Bi4Dmap:
   connection: doctrine
   tableName: public.bi_4_dmap
   columns:
@@ -138,17 +138,17 @@ Public_Bi4Dmap_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Bi4Dis_Item:
+    Bi4Dis:
       local: distinct_id
       foreign: distinct_id
       type: one
-    Public_Item_Item:
+    Item:
       local: item_id
       foreign: item_id
       type: one
 
 
-Public_BiItem_Item:
+BiItem:
   connection: doctrine
   tableName: public.bi_item
   columns:
@@ -183,13 +183,13 @@ Public_BiItem_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Item_Item:
+    Item:
       local: item_id
       foreign: item_id
       type: one
 
 
-Public_BiWithdrawn_Item:
+BiWithdrawn:
   connection: doctrine
   tableName: public.bi_withdrawn
   columns:
@@ -224,13 +224,13 @@ Public_BiWithdrawn_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Item_Item:
+    Item:
       local: item_id
       foreign: item_id
       type: one
 
 
-Public_Bitstream_Item:
+Bitstream:
   connection: doctrine
   tableName: public.bitstream
   columns:
@@ -313,38 +313,38 @@ Public_Bitstream_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Bitstreamformatregistry_Item:
+    Bitstreamformatregistry:
       local: bitstream_format_id
       foreign: bitstream_format_id
       type: one
-    Public_Bundle_Items:
-      class: Public_Bundle_Item
+    Bundles:
+      class: Bundle
       local: bitstream_id
       foreign: primary_bitstream_id
       type: many
-    Public_MostRecentChecksum_Items:
-      class: Public_MostRecentChecksum_Item
+    MostRecentChecksums:
+      class: MostRecentChecksum
       local: bitstream_id
       foreign: bitstream_id
       type: many
-    Public_Bundle2bitstream_Items:
-      class: Public_Bundle2bitstream_Item
+    Bundle2bitstreams:
+      class: Bundle2bitstream
       local: bitstream_id
       foreign: bitstream_id
       type: many
-    Public_Collection_Items:
-      class: Public_Collection_Item
+    Collections:
+      class: Collection
       local: bitstream_id
       foreign: logo_bitstream_id
       type: many
-    Public_Community_Items:
-      class: Public_Community_Item
+    Communitys:
+      class: Community
       local: bitstream_id
       foreign: logo_bitstream_id
       type: many
 
 
-Public_Bitstreamformatregistry_Item:
+Bitstreamformatregistry:
   connection: doctrine
   tableName: public.bitstreamformatregistry
   columns:
@@ -385,19 +385,19 @@ Public_Bitstreamformatregistry_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Fileextension_Items:
-      class: Public_Fileextension_Item
+    Fileextensions:
+      class: Fileextension
       local: bitstream_format_id
       foreign: bitstream_format_id
       type: many
-    Public_Bitstream_Items:
-      class: Public_Bitstream_Item
+    Bitstreams:
+      class: Bitstream
       local: bitstream_format_id
       foreign: bitstream_format_id
       type: many
 
 
-Public_Bundle2bitstream_Item:
+Bundle2bitstream:
   connection: doctrine
   tableName: public.bundle2bitstream
   columns:
@@ -420,17 +420,17 @@ Public_Bundle2bitstream_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Bundle_Item:
+    Bundle:
       local: bundle_id
       foreign: bundle_id
       type: one
-    Public_Bitstream_Item:
+    Bitstream:
       local: bitstream_id
       foreign: bitstream_id
       type: one
 
 
-Public_Bundle_Item:
+Bundle:
   connection: doctrine
   tableName: public.bundle
   columns:
@@ -453,23 +453,23 @@ Public_Bundle_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Bitstream_Item:
+    Bitstream:
       local: primary_bitstream_id
       foreign: bitstream_id
       type: one
-    Public_Bundle2bitstream_Items:
-      class: Public_Bundle2bitstream_Item
+    Bundle2bitstreams:
+      class: Bundle2bitstream
       local: bundle_id
       foreign: bundle_id
       type: many
-    Public_Item2bundle_Items:
-      class: Public_Item2bundle_Item
+    Item2bundles:
+      class: Item2bundle
       local: bundle_id
       foreign: bundle_id
       type: many
 
 
-Public_ChecksumHistory_Item:
+ChecksumHistory:
   connection: doctrine
   tableName: public.checksum_history
   columns:
@@ -517,13 +517,13 @@ Public_ChecksumHistory_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_ChecksumResults_Item:
+    ChecksumResults:
       local: result
       foreign: result_code
       type: one
 
 
-Public_ChecksumResults_Item:
+ChecksumResults:
   connection: doctrine
   tableName: public.checksum_results
   columns:
@@ -540,19 +540,19 @@ Public_ChecksumResults_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_MostRecentChecksum_Items:
-      class: Public_MostRecentChecksum_Item
+    MostRecentChecksums:
+      class: MostRecentChecksum
       local: result_code
       foreign: result
       type: many
-    Public_ChecksumHistory_Items:
-      class: Public_ChecksumHistory_Item
+    ChecksumHistorys:
+      class: ChecksumHistory
       local: result_code
       foreign: result
       type: many
 
 
-Public_Collection2item_Item:
+Collection2item:
   connection: doctrine
   tableName: public.collection2item
   columns:
@@ -575,18 +575,18 @@ Public_Collection2item_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Collection_Item:
+    Collection:
       local: collection_id
       foreign: collection_id
       type: one
-    Public_Item_Item_ForItem:
-      class: Public_Item_Item
+    Item_ForItem:
+      class: Item
       local: item_id
       foreign: item_id
       type: one
 
 
-Public_CollectionItemCount_Item:
+CollectionItemCount:
   connection: doctrine
   tableName: public.collection_item_count
   columns:
@@ -603,13 +603,13 @@ Public_CollectionItemCount_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Collection_Item:
+    Collection:
       local: collection_id
       foreign: collection_id
       type: one
 
 
-Public_Collection_Item:
+Collection:
   connection: doctrine
   tableName: public.collection
   columns:
@@ -704,77 +704,77 @@ Public_Collection_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Bitstream_Item:
+    Bitstream:
       local: logo_bitstream_id
       foreign: bitstream_id
       type: one
-    Public_Item_Item:
+    Item:
       local: template_item_id
       foreign: item_id
       type: one
-    Public_Epersongroup_Item_ForWorkflowStep1:
-      class: Public_Epersongroup_Item
+    Epersongroup_ForWorkflowStep1:
+      class: Epersongroup
       local: workflow_step_1
       foreign: eperson_group_id
       type: one
-    Public_Epersongroup_Item_ForWorkflowStep2:
-      class: Public_Epersongroup_Item
+    Epersongroup_ForWorkflowStep2:
+      class: Epersongroup
       local: workflow_step_2
       foreign: eperson_group_id
       type: one
-    Public_Epersongroup_Item_ForWorkflowStep3:
-      class: Public_Epersongroup_Item
+    Epersongroup_ForWorkflowStep3:
+      class: Epersongroup
       local: workflow_step_3
       foreign: eperson_group_id
       type: one
-    Public_Epersongroup_Item_ForAdmin:
-      class: Public_Epersongroup_Item
+    Epersongroup_ForAdmin:
+      class: Epersongroup
       local: admin
       foreign: eperson_group_id
       type: one
-    Public_Epersongroup_Item_ForSubmitter:
-      class: Public_Epersongroup_Item
+    Epersongroup_ForSubmitter:
+      class: Epersongroup
       local: submitter
       foreign: eperson_group_id
       type: one
-    Public_Subscription_Items:
-      class: Public_Subscription_Item
+    Subscriptions:
+      class: Subscription
       local: collection_id
       foreign: collection_id
       type: many
-    Public_Community2collection_Items:
-      class: Public_Community2collection_Item
+    Community2collections:
+      class: Community2collection
       local: collection_id
       foreign: collection_id
       type: many
-    Public_Collection2item_Items:
-      class: Public_Collection2item_Item
+    Collection2items:
+      class: Collection2item
       local: collection_id
       foreign: collection_id
       type: many
-    Public_CollectionItemCount_Items:
-      class: Public_CollectionItemCount_Item
+    CollectionItemCounts:
+      class: CollectionItemCount
       local: collection_id
       foreign: collection_id
       type: many
-    Public_Workflowitem_Items:
-      class: Public_Workflowitem_Item
+    Workflowitems:
+      class: Workflowitem
       local: collection_id
       foreign: collection_id
       type: many
-    Public_HarvestedCollection_Items:
-      class: Public_HarvestedCollection_Item
+    HarvestedCollections:
+      class: HarvestedCollection
       local: collection_id
       foreign: collection_id
       type: many
-    Public_Workspaceitem_Items:
-      class: Public_Workspaceitem_Item
+    Workspaceitems:
+      class: Workspaceitem
       local: collection_id
       foreign: collection_id
       type: many
 
 
-Public_Communities2item_Item:
+Communities2item:
   connection: doctrine
   tableName: public.communities2item
   columns:
@@ -797,17 +797,17 @@ Public_Communities2item_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Community_Item:
+    Community:
       local: community_id
       foreign: community_id
       type: one
-    Public_Item_Item:
+    Item:
       local: item_id
       foreign: item_id
       type: one
 
 
-Public_Community2collection_Item:
+Community2collection:
   connection: doctrine
   tableName: public.community2collection
   columns:
@@ -830,18 +830,18 @@ Public_Community2collection_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Community_Item:
+    Community as Community:
       local: community_id
       foreign: community_id
       type: one
-    Public_Collection_Item_ForCollection:
-      class: Public_Collection_Item
+    Collection_ForCollection as Collection:
+      class: Collection
       local: collection_id
       foreign: collection_id
       type: one
 
 
-Public_Community2community_Item:
+Community2community:
   connection: doctrine
   tableName: public.community2community
   columns:
@@ -864,19 +864,19 @@ Public_Community2community_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Community_Item_ForParentComm:
-      class: Public_Community_Item
+    Community_ForParentComm:
+      class: Community
       local: parent_comm_id
       foreign: community_id
       type: one
-    Public_Community_Item_ForChildComm:
-      class: Public_Community_Item
+    Community_ForChildComm:
+      class: Community
       local: child_comm_id
       foreign: community_id
       type: one
 
 
-Public_CommunityItemCount_Item:
+CommunityItemCount:
   connection: doctrine
   tableName: public.community_item_count
   columns:
@@ -893,13 +893,13 @@ Public_CommunityItemCount_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Community_Item:
+    Community:
       local: community_id
       foreign: community_id
       type: one
 
 
-Public_Community_Item:
+Community:
   connection: doctrine
   tableName: public.community
   columns:
@@ -952,42 +952,42 @@ Public_Community_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Bitstream_Item:
+    Bitstream:
       local: logo_bitstream_id
       foreign: bitstream_id
       type: one
-    Public_Epersongroup_Item:
+    Epersongroup:
       local: admin
       foreign: eperson_group_id
       type: one
-    Public_Community2collection_Items:
-      class: Public_Community2collection_Item
+    Community2collections:
+      class: Community2collection
       local: community_id
       foreign: community_id
       type: many
-    Public_Community2community_Items_ForParentComm:
-      class: Public_Community2community_Item
+    Community2communitys_ForParentComm:
+      class: Community2community
       local: community_id
       foreign: parent_comm_id
       type: many
-    Public_Community2community_Items_ForChildComm:
-      class: Public_Community2community_Item
+    Community2communitys_ForChildComm:
+      class: Community2community
       local: community_id
       foreign: child_comm_id
       type: many
-    Public_CommunityItemCount_Items:
-      class: Public_CommunityItemCount_Item
+    CommunityItemCounts:
+      class: CommunityItemCount
       local: community_id
       foreign: community_id
       type: many
-    Public_Communities2item_Items:
-      class: Public_Communities2item_Item
+    Communities2items:
+      class: Communities2item
       local: community_id
       foreign: community_id
       type: many
 
 
-Public_Eperson_Item:
+Eperson:
   connection: doctrine
   tableName: public.eperson
   columns:
@@ -1070,39 +1070,39 @@ Public_Eperson_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Subscription_Items:
-      class: Public_Subscription_Item
+    Subscriptions:
+      class: Subscription
       local: eperson_id
       foreign: eperson_id
       type: many
-    Public_Resourcepolicy_Items:
-      class: Public_Resourcepolicy_Item
+    Resourcepolicys:
+      class: Resourcepolicy
       local: eperson_id
       foreign: eperson_id
       type: many
-    Public_Workflowitem_Items:
-      class: Public_Workflowitem_Item
+    Workflowitems:
+      class: Workflowitem
       local: eperson_id
       foreign: owner
       type: many
-    Public_Epersongroup2eperson_Items:
-      class: Public_Epersongroup2eperson_Item
+    Epersongroup2epersons:
+      class: Epersongroup2eperson
       local: eperson_id
       foreign: eperson_id
       type: many
-    Public_Tasklistitem_Items:
-      class: Public_Tasklistitem_Item
+    Tasklistitems:
+      class: Tasklistitem
       local: eperson_id
       foreign: eperson_id
       type: many
-    Public_Item_Items:
-      class: Public_Item_Item
+    Items:
+      class: Item
       local: eperson_id
       foreign: submitter_id
       type: many
 
 
-Public_Epersongroup2eperson_Item:
+Epersongroup2eperson:
   connection: doctrine
   tableName: public.epersongroup2eperson
   columns:
@@ -1125,17 +1125,17 @@ Public_Epersongroup2eperson_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Epersongroup_Item:
+    Epersongroup:
       local: eperson_group_id
       foreign: eperson_group_id
       type: one
-    Public_Eperson_Item:
+    Eperson:
       local: eperson_id
       foreign: eperson_id
       type: one
 
 
-Public_Epersongroup2workspaceitem_Item:
+Epersongroup2workspaceitem:
   connection: doctrine
   tableName: public.epersongroup2workspaceitem
   columns:
@@ -1159,7 +1159,7 @@ Public_Epersongroup2workspaceitem_Item:
   package: Public.Entities
 
 
-Public_Epersongroup_Item:
+Epersongroup:
   connection: doctrine
   tableName: public.epersongroup
   columns:
@@ -1176,69 +1176,69 @@ Public_Epersongroup_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Group2group_Items_ForChild:
-      class: Public_Group2group_Item
+    Group2groups_ForChild:
+      class: Group2group
       local: eperson_group_id
       foreign: child_id
       type: many
-    Public_Group2group_Items_ForParent:
-      class: Public_Group2group_Item
+    Group2groups_ForParent:
+      class: Group2group
       local: eperson_group_id
       foreign: parent_id
       type: many
-    Public_Collection_Items_ForWorkflowStep1:
-      class: Public_Collection_Item
+    Collections_ForWorkflowStep1:
+      class: Collection
       local: eperson_group_id
       foreign: workflow_step_1
       type: many
-    Public_Collection_Items_ForWorkflowStep2:
-      class: Public_Collection_Item
+    Collections_ForWorkflowStep2:
+      class: Collection
       local: eperson_group_id
       foreign: workflow_step_2
       type: many
-    Public_Collection_Items_ForWorkflowStep3:
-      class: Public_Collection_Item
+    Collections_ForWorkflowStep3:
+      class: Collection
       local: eperson_group_id
       foreign: workflow_step_3
       type: many
-    Public_Collection_Items_ForAdmin:
-      class: Public_Collection_Item
+    Collections_ForAdmin:
+      class: Collection
       local: eperson_group_id
       foreign: admin
       type: many
-    Public_Collection_Items_ForSubmitter:
-      class: Public_Collection_Item
+    Collections_ForSubmitter:
+      class: Collection
       local: eperson_group_id
       foreign: submitter
       type: many
-    Public_Resourcepolicy_Items:
-      class: Public_Resourcepolicy_Item
+    Resourcepolicys:
+      class: Resourcepolicy
       local: eperson_group_id
       foreign: epersongroup_id
       type: many
-    Public_Group2groupcache_Items_ForChild:
-      class: Public_Group2groupcache_Item
+    Group2groupcaches_ForChild:
+      class: Group2groupcache
       local: eperson_group_id
       foreign: child_id
       type: many
-    Public_Group2groupcache_Items_ForParent:
-      class: Public_Group2groupcache_Item
+    Group2groupcaches_ForParent:
+      class: Group2groupcache
       local: eperson_group_id
       foreign: parent_id
       type: many
-    Public_Community_Items:
-      class: Public_Community_Item
+    Communitys:
+      class: Community
       local: eperson_group_id
       foreign: admin
       type: many
-    Public_Epersongroup2eperson_Items:
-      class: Public_Epersongroup2eperson_Item
+    Epersongroup2epersons:
+      class: Epersongroup2eperson
       local: eperson_group_id
       foreign: eperson_group_id
       type: many
 
 
-Public_Fileextension_Item:
+Fileextension:
   connection: doctrine
   tableName: public.fileextension
   columns:
@@ -1261,13 +1261,13 @@ Public_Fileextension_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Bitstreamformatregistry_Item:
+    Bitstreamformatregistry:
       local: bitstream_format_id
       foreign: bitstream_format_id
       type: one
 
 
-Public_Group2group_Item:
+Group2group:
   connection: doctrine
   tableName: public.group2group
   columns:
@@ -1290,19 +1290,19 @@ Public_Group2group_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Epersongroup_Item_ForChild:
-      class: Public_Epersongroup_Item
+    Epersongroup_ForChild:
+      class: Epersongroup
       local: child_id
       foreign: eperson_group_id
       type: one
-    Public_Epersongroup_Item_ForParent:
-      class: Public_Epersongroup_Item
+    Epersongroup_ForParent:
+      class: Epersongroup
       local: parent_id
       foreign: eperson_group_id
       type: one
 
 
-Public_Group2groupcache_Item:
+Group2groupcache:
   connection: doctrine
   tableName: public.group2groupcache
   columns:
@@ -1325,19 +1325,19 @@ Public_Group2groupcache_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Epersongroup_Item_ForChild:
-      class: Public_Epersongroup_Item
+    Epersongroup_ForChild:
+      class: Epersongroup
       local: child_id
       foreign: eperson_group_id
       type: one
-    Public_Epersongroup_Item_ForParent:
-      class: Public_Epersongroup_Item
+    Epersongroup_ForParent:
+      class: Epersongroup
       local: parent_id
       foreign: eperson_group_id
       type: one
 
 
-Public_Handle_Item:
+Handle:
   connection: doctrine
   tableName: public.handle
   columns:
@@ -1367,7 +1367,7 @@ Public_Handle_Item:
   package: Public.Entities
 
 
-Public_HarvestedCollection_Item:
+HarvestedCollection:
   connection: doctrine
   tableName: public.harvested_collection
   columns:
@@ -1432,13 +1432,13 @@ Public_HarvestedCollection_Item:
       primary: true
   package: Public.Entities
   relations:
-    Public_Collection_Item:
+    Collection:
       local: collection_id
       foreign: collection_id
       type: one
 
 
-Public_HarvestedItem_Item:
+HarvestedItem:
   connection: doctrine
   tableName: public.harvested_item
   columns:
@@ -1467,13 +1467,13 @@ Public_HarvestedItem_Item:
       primary: true
   package: Public.Entities
   relations:
-    Public_Item_Item:
+    Item:
       local: item_id
       foreign: item_id
       type: one
 
 
-Public_Item2bundle_Item:
+Item2bundle:
   connection: doctrine
   tableName: public.item2bundle
   columns:
@@ -1496,17 +1496,17 @@ Public_Item2bundle_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Item_Item:
+    Item:
       local: item_id
       foreign: item_id
       type: one
-    Public_Bundle_Item:
+    Bundle:
       local: bundle_id
       foreign: bundle_id
       type: one
 
 
-Public_Item_Item:
+Item:
   connection: doctrine
   tableName: public.item
   columns:
@@ -1547,73 +1547,73 @@ Public_Item_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Eperson_Item:
+    Eperson:
       local: submitter_id
       foreign: eperson_id
       type: one
-    Public_BiItem_Items:
-      class: Public_BiItem_Item
+    BiItems:
+      class: BiItem
       local: item_id
       foreign: item_id
       type: many
-    Public_HarvestedItem_Items:
-      class: Public_HarvestedItem_Item
+    HarvestedItems:
+      class: HarvestedItem
       local: item_id
       foreign: item_id
       type: many
-    Public_BiWithdrawn_Items:
-      class: Public_BiWithdrawn_Item
+    BiWithdrawns:
+      class: BiWithdrawn
       local: item_id
       foreign: item_id
       type: many
-    Public_Bi2Dmap_Items:
-      class: Public_Bi2Dmap_Item
+    Bi2Dmaps:
+      class: Bi2Dmap
       local: item_id
       foreign: item_id
       type: many
-    Public_Collection_Items:
-      class: Public_Collection_Item
+    Collections:
+      class: Collection
       local: item_id
       foreign: template_item_id
       type: many
-    Public_Item2bundle_Items:
-      class: Public_Item2bundle_Item
+    Item2bundles:
+      class: Item2bundle
       local: item_id
       foreign: item_id
       type: many
-    Public_Collection2item_Items:
-      class: Public_Collection2item_Item
+    Collection2items:
+      class: Collection2item
       local: item_id
       foreign: item_id
       type: many
-    Public_Metadatavalue_Items:
-      class: Public_Metadatavalue_Item
+    Metadatavalues:
+      class: Metadatavalue
       local: item_id
       foreign: item_id
       type: many
-    Public_Bi4Dmap_Items:
-      class: Public_Bi4Dmap_Item
+    Bi4Dmaps:
+      class: Bi4Dmap
       local: item_id
       foreign: item_id
       type: many
-    Public_Workflowitem_Items:
-      class: Public_Workflowitem_Item
+    Workflowitems:
+      class: Workflowitem
       local: item_id
       foreign: item_id
       type: many
-    Public_Communities2item_Items:
-      class: Public_Communities2item_Item
+    Communities2items:
+      class: Communities2item
       local: item_id
       foreign: item_id
       type: many
-    Public_Workspaceitem_Items:
-      class: Public_Workspaceitem_Item
+    Workspaceitems:
+      class: Workspaceitem
       local: item_id
       foreign: item_id
       type: many
 
 
-Public_Metadatafieldregistry_Item:
+Metadatafieldregistry:
   connection: doctrine
   tableName: public.metadatafieldregistry
   columns:
@@ -1648,18 +1648,18 @@ Public_Metadatafieldregistry_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Metadataschemaregistry_Item:
+    Metadataschemaregistry:
       local: metadata_schema_id
       foreign: metadata_schema_id
       type: one
-    Public_Metadatavalue_Items:
-      class: Public_Metadatavalue_Item
+    Metadatavalues:
+      class: Metadatavalue
       local: metadata_field_id
       foreign: metadata_field_id
       type: many
 
 
-Public_Metadataschemaregistry_Item:
+Metadataschemaregistry:
   connection: doctrine
   tableName: public.metadataschemaregistry
   columns:
@@ -1682,14 +1682,14 @@ Public_Metadataschemaregistry_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Metadatafieldregistry_Items:
-      class: Public_Metadatafieldregistry_Item
+    Metadatafieldregistrys:
+      class: Metadatafieldregistry
       local: metadata_schema_id
       foreign: metadata_schema_id
       type: many
 
 
-Public_Metadatavalue_Item:
+Metadatavalue:
   connection: doctrine
   tableName: public.metadatavalue
   columns:
@@ -1743,17 +1743,17 @@ Public_Metadatavalue_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Item_Item:
+    Item:
       local: item_id
       foreign: item_id
       type: one
-    Public_Metadatafieldregistry_Item:
+    Metadatafieldregistry:
       local: metadata_field_id
       foreign: metadata_field_id
       type: one
 
 
-Public_MostRecentChecksum_Item:
+MostRecentChecksum:
   connection: doctrine
   tableName: public.most_recent_checksum
   columns:
@@ -1812,17 +1812,17 @@ Public_MostRecentChecksum_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Bitstream_Item:
+    Bitstream:
       local: bitstream_id
       foreign: bitstream_id
       type: one
-    Public_ChecksumResults_Item:
+    ChecksumResults:
       local: result
       foreign: result_code
       type: one
 
 
-Public_Registrationdata_Item:
+Registrationdata:
   connection: doctrine
   tableName: public.registrationdata
   columns:
@@ -1852,7 +1852,7 @@ Public_Registrationdata_Item:
   package: Public.Entities
 
 
-Public_Resourcepolicy_Item:
+Resourcepolicy:
   connection: doctrine
   tableName: public.resourcepolicy
   columns:
@@ -1905,17 +1905,17 @@ Public_Resourcepolicy_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Eperson_Item:
+    Eperson:
       local: eperson_id
       foreign: eperson_id
       type: one
-    Public_Epersongroup_Item:
+    Epersongroup:
       local: epersongroup_id
       foreign: eperson_group_id
       type: one
 
 
-Public_Subscription_Item:
+Subscription:
   connection: doctrine
   tableName: public.subscription
   columns:
@@ -1938,17 +1938,17 @@ Public_Subscription_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Eperson_Item:
+    Eperson:
       local: eperson_id
       foreign: eperson_id
       type: one
-    Public_Collection_Item:
+    Collection:
       local: collection_id
       foreign: collection_id
       type: one
 
 
-Public_Tasklistitem_Item:
+Tasklistitem:
   connection: doctrine
   tableName: public.tasklistitem
   columns:
@@ -1971,17 +1971,17 @@ Public_Tasklistitem_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Eperson_Item:
+    Eperson:
       local: eperson_id
       foreign: eperson_id
       type: one
-    Public_Workflowitem_Item:
+    Workflowitem:
       local: workflow_id
       foreign: workflow_id
       type: one
 
 
-Public_Workflowitem_Item:
+Workflowitem:
   connection: doctrine
   tableName: public.workflowitem
   columns:
@@ -2034,26 +2034,26 @@ Public_Workflowitem_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Item_Item:
+    Item:
       local: item_id
       foreign: item_id
       type: one
-    Public_Collection_Item:
+    Collection:
       local: collection_id
       foreign: collection_id
       type: one
-    Public_Eperson_Item:
+    Eperson:
       local: owner
       foreign: eperson_id
       type: one
-    Public_Tasklistitem_Items:
-      class: Public_Tasklistitem_Item
+    Tasklistitems:
+      class: Tasklistitem
       local: workflow_id
       foreign: workflow_id
       type: many
 
 
-Public_Workspaceitem_Item:
+Workspaceitem:
   connection: doctrine
   tableName: public.workspaceitem
   columns:
@@ -2106,11 +2106,11 @@ Public_Workspaceitem_Item:
       primary: false
   package: Public.Entities
   relations:
-    Public_Item_Item:
+    Item:
       local: item_id
       foreign: item_id
       type: one
-    Public_Collection_Item:
+    Collection:
       local: collection_id
       foreign: collection_id
       type: one

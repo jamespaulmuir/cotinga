@@ -1,13 +1,35 @@
-public_community_item:
+collection:
   class: sfRestRouteCollection
   options:
-    model:                Public_Community_Item
-    module:               communities
-    prefix_path:          communities
-    column:               id
+    model:                Collection
+    module:               collections
+    prefix_path:          collections
+    column:               collection_id
     with_wildcard_routes: true
   requirements:
-    id: "\d+"
+    collection_id: "\d+"
+    
+community:
+  class: sfRestRouteCollection
+  options:
+    model:                Community
+    module:               communities
+    prefix_path:          communities
+    column:               community_id
+    with_wildcard_routes: true
+  requirements:
+    community_id: "\d+"
+item:
+  class: sfRestRouteCollection
+  options:
+    model:                Item
+    module:               items
+    prefix_path:          items
+    column:               item_id
+    with_wildcard_routes: true
+  requirements:
+    item_id: "\d+"
+
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
