@@ -1,0 +1,12 @@
+config/databases.yml
+cache/*
+log/*
+web/.htaccess
+web/*Plugin
+web/sf
+web/uploads/*
+web/frontend_dev.php
+web/backend_dev.php
+lib/*/doctrine/base
+lib/*/doctrine/*Plugin/base
+plugins/.*
