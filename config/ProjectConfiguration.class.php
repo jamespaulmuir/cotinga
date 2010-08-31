@@ -9,7 +9,7 @@ class ProjectConfiguration extends sfProjectConfiguration
   {
     $this->enablePlugins('sfDoctrinePlugin');
     $this->enablePlugins('sfPostgresDoctrinePlugin');
-
+    $this->enablePlugins('sfRestPlugin');
 
     
 	

@@ -1,0 +1,26 @@
+public_community_item:
+  class: sfRestRouteCollection
+  options:
+    model:                Public_Community_Item
+    module:               communities
+    prefix_path:          communities
+    column:               id
+    with_wildcard_routes: true
+  requirements:
+    id: "\d+"
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepage:
+  url:   /
+  param: { module: default, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*
