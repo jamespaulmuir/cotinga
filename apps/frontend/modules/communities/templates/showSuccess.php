@@ -14,7 +14,7 @@
 <ul>
 <?php foreach($subcommunities as $com2com): ?>
     <li>
-    <a href="<?php echo url_for('communities/show').'/community_id/'.$com2com->child_comm_id; ?>">
+    <a href="<?php echo url_for('communities/show?community_id='.$com2com->child_comm_id); ?>">
     <?php echo $com2com->Community_ForChildComm->name; ?></a>
 
     </li>

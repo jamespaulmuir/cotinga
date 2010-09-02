@@ -467,6 +467,16 @@ Bundle:
       local: bundle_id
       foreign: bundle_id
       type: many
+    Items:
+      class: Item
+      local: bundle_id
+      foreign: item_id
+      refClass: Item2bundle
+    Bitstreams:
+      class: Bitstream
+      local: bundle_id
+      foreign: bitstream_id
+      refClass: Bundle2bitstream
 
 
 ChecksumHistory:

@@ -43,7 +43,7 @@ class Item extends BaseItem
         if($name == 'metadata'){
             return $this->getMetadata();
         }
-        parent::__get($name);
+        return parent::__get($name);
     }
 
     

@@ -26,6 +26,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property Doctrine_Collection $Workflowitems
  * @property Doctrine_Collection $Communities2items
  * @property Doctrine_Collection $Workspaceitems
+ * @property Doctrine_Collection $Bundle
  * 
  * @method integer             getItemId()            Returns the current record's "item_id" value
  * @method integer             getSubmitterId()       Returns the current record's "submitter_id" value
@@ -46,6 +47,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method Doctrine_Collection getWorkflowitems()     Returns the current record's "Workflowitems" collection
  * @method Doctrine_Collection getCommunities2items() Returns the current record's "Communities2items" collection
  * @method Doctrine_Collection getWorkspaceitems()    Returns the current record's "Workspaceitems" collection
+ * @method Doctrine_Collection getBundle()            Returns the current record's "Bundle" collection
  * @method Item                setItemId()            Sets the current record's "item_id" value
  * @method Item                setSubmitterId()       Sets the current record's "submitter_id" value
  * @method Item                setInArchive()         Sets the current record's "in_archive" value
@@ -65,6 +67,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method Item                setWorkflowitems()     Sets the current record's "Workflowitems" collection
  * @method Item                setCommunities2items() Sets the current record's "Communities2items" collection
  * @method Item                setWorkspaceitems()    Sets the current record's "Workspaceitems" collection
+ * @method Item                setBundle()            Sets the current record's "Bundle" collection
  * 
  * @package    dspace
  * @subpackage model
@@ -179,5 +182,10 @@ abstract class BaseItem extends BaseDoctrineRecord
         $this->hasMany('Workspaceitem as Workspaceitems', array(
              'local' => 'item_id',
              'foreign' => 'item_id'));
+
+        $this->hasMany('Bundle', array(
+             'refClass' => 'Item2bundle',
+             'local' => 'item_id',
+             'foreign' => 'bundle_id'));
     }
 }

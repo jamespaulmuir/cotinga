@@ -1,34 +1,33 @@
+<h2><?php echo $item->metadata['dc.title']; ?></h2>
+
 <table>
-  <tbody>
-    <tr>
-      <th>Item:</th>
-      <td><?php echo $item->getItemId() ?></td>
-    </tr>
-    <tr>
-      <th>Submitter:</th>
-      <td><?php echo $item->getSubmitterId() ?></td>
-    </tr>
-    <tr>
-      <th>In archive:</th>
-      <td><?php echo $item->getInArchive() ?></td>
-    </tr>
-    <tr>
-      <th>Withdrawn:</th>
-      <td><?php echo $item->getWithdrawn() ?></td>
-    </tr>
-    <tr>
-      <th>Owning collection:</th>
-      <td><?php echo $item->getOwningCollection() ?></td>
-    </tr>
-    <tr>
-      <th>Last modified:</th>
-      <td><?php //echo $item->getLastModified() ?></td>
-    </tr>
-  </tbody>
+<?php foreach($item->metadata as $name=>$value): ?>
+<tr>
+    <td><?php echo $name; ?></td>
+    <td><?php echo $value; ?></td>
+</tr>
+<?php endforeach; ?>
+
 </table>
 
-<hr />
+<h3>Files in this Item</h3>
+<ul>
+<?php foreach($bundles as $bundle): ?>
 
-<a href="<?php echo url_for('items/edit?item_id='.$item->getItemId()) ?>">Edit</a>
-&nbsp;
-<a href="<?php echo url_for('items/index') ?>">List</a>
+<?php if($bundle->getName() == 'ORIGINAL' || 1): ?>
+
+<?php foreach($bundle->Bitstreams as $bitstream): ?>
+<li>    (<?php echo $bitstream->sequence_id; ?>) <?php echo $bundle->name; ?>:    <?php echo $bitstream->getName(); ?>  -
+
+        <?php echo $bitstream->Bitstreamformatregistry->short_description; ?>
+
+        
+
+    <?php // print_R($bitstream->toArray(false)); ?>
+</li>
+    <?php endforeach; ?>
+
+<?php endif; ?>
+    
+<?php endforeach; ?>
+</ul>

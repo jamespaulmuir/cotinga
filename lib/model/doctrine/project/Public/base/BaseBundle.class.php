@@ -13,6 +13,8 @@ Doctrine_Manager::getInstance()->bindComponent('Bundle', 'doctrine');
  * @property Bitstream $Bitstream
  * @property Doctrine_Collection $Bundle2bitstreams
  * @property Doctrine_Collection $Item2bundles
+ * @property Doctrine_Collection $Items
+ * @property Doctrine_Collection $Bitstreams
  * 
  * @method integer             getBundleId()             Returns the current record's "bundle_id" value
  * @method string              getName()                 Returns the current record's "name" value
@@ -20,12 +22,16 @@ Doctrine_Manager::getInstance()->bindComponent('Bundle', 'doctrine');
  * @method Bitstream           getBitstream()            Returns the current record's "Bitstream" value
  * @method Doctrine_Collection getBundle2bitstreams()    Returns the current record's "Bundle2bitstreams" collection
  * @method Doctrine_Collection getItem2bundles()         Returns the current record's "Item2bundles" collection
+ * @method Doctrine_Collection getItems()                Returns the current record's "Items" collection
+ * @method Doctrine_Collection getBitstreams()           Returns the current record's "Bitstreams" collection
  * @method Bundle              setBundleId()             Sets the current record's "bundle_id" value
  * @method Bundle              setName()                 Sets the current record's "name" value
  * @method Bundle              setPrimaryBitstreamId()   Sets the current record's "primary_bitstream_id" value
  * @method Bundle              setBitstream()            Sets the current record's "Bitstream" value
  * @method Bundle              setBundle2bitstreams()    Sets the current record's "Bundle2bitstreams" collection
  * @method Bundle              setItem2bundles()         Sets the current record's "Item2bundles" collection
+ * @method Bundle              setItems()                Sets the current record's "Items" collection
+ * @method Bundle              setBitstreams()           Sets the current record's "Bitstreams" collection
  * 
  * @package    dspace
  * @subpackage model
@@ -76,5 +82,15 @@ abstract class BaseBundle extends BaseDoctrineRecord
         $this->hasMany('Item2bundle as Item2bundles', array(
              'local' => 'bundle_id',
              'foreign' => 'bundle_id'));
+
+        $this->hasMany('Item as Items', array(
+             'refClass' => 'Item2bundle',
+             'local' => 'bundle_id',
+             'foreign' => 'item_id'));
+
+        $this->hasMany('Bitstream as Bitstreams', array(
+             'refClass' => 'Bundle2bitstream',
+             'local' => 'bundle_id',
+             'foreign' => 'bitstream_id'));
     }
 }
