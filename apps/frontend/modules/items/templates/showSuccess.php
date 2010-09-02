@@ -17,8 +17,12 @@
 <?php if($bundle->getName() == 'ORIGINAL' || 1): ?>
 
 <?php foreach($bundle->Bitstreams as $bitstream): ?>
-<li>    (<?php echo $bitstream->sequence_id; ?>) <?php echo $bundle->name; ?>:    <?php echo $bitstream->getName(); ?>  -
-
+<li>    (<?php echo $bitstream->sequence_id; ?>)
+<?php echo $bundle->name; ?>:
+<?php $handle_id = substr($item->metadata['dc.identifier.uri'], strrpos($item->metadata['dc.identifier.uri'], '/')+1); ?>
+<a href="https://kb.osu.edu/dspace/bitstream/1811/<?php echo $handle_id; ?>/<?php echo $bitstream->sequence_id;?>/<?php echo $bitstream->getName(); ?>">
+<?php echo $bitstream->getName(); ?> 
+</a> -
         <?php echo $bitstream->Bitstreamformatregistry->short_description; ?>
 
         
