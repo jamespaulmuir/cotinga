@@ -16,7 +16,7 @@ abstract class BaseMetadatafieldregistryForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'metadata_field_id'  => new sfWidgetFormInputHidden(),
-      'metadata_schema_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Metadataschemaregistry'), 'add_empty' => false)),
+      'metadata_schema_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('MetadataSchema'), 'add_empty' => false)),
       'element'            => new sfWidgetFormTextarea(),
       'qualifier'          => new sfWidgetFormTextarea(),
       'scope_note'         => new sfWidgetFormTextarea(),
@@ -24,7 +24,7 @@ abstract class BaseMetadatafieldregistryForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'metadata_field_id'  => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'metadata_field_id', 'required' => false)),
-      'metadata_schema_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Metadataschemaregistry'))),
+      'metadata_schema_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('MetadataSchema'))),
       'element'            => new sfValidatorString(array('required' => false)),
       'qualifier'          => new sfValidatorString(array('required' => false)),
       'scope_note'         => new sfValidatorString(array('required' => false)),

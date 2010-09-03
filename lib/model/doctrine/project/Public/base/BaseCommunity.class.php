@@ -15,44 +15,53 @@ Doctrine_Manager::getInstance()->bindComponent('Community', 'doctrine');
  * @property string $copyright_text
  * @property string $side_bar_text
  * @property integer $admin
- * @property Bitstream $Bitstream
+ * @property Bitstream $LogoBitstream
  * @property Epersongroup $Epersongroup
- * @property Doctrine_Collection $Community2collections
- * @property Doctrine_Collection $Community2communitys_ForParentComm
- * @property Doctrine_Collection $Community2communitys_ForChildComm
+ * @property Doctrine_Collection $Collections
+ * @property Doctrine_Collection $ParentCommunities
+ * @property Doctrine_Collection $ChildCommunities
  * @property Doctrine_Collection $CommunityItemCounts
- * @property Doctrine_Collection $Communities2items
+ * @property Doctrine_Collection $Items
+ * @property Doctrine_Collection $Communities2item
+ * @property Doctrine_Collection $Community2collection
+ * @property Doctrine_Collection $Community2community
  * 
- * @method integer             getCommunityId()                        Returns the current record's "community_id" value
- * @method string              getName()                               Returns the current record's "name" value
- * @method string              getShortDescription()                   Returns the current record's "short_description" value
- * @method string              getIntroductoryText()                   Returns the current record's "introductory_text" value
- * @method integer             getLogoBitstreamId()                    Returns the current record's "logo_bitstream_id" value
- * @method string              getCopyrightText()                      Returns the current record's "copyright_text" value
- * @method string              getSideBarText()                        Returns the current record's "side_bar_text" value
- * @method integer             getAdmin()                              Returns the current record's "admin" value
- * @method Bitstream           getBitstream()                          Returns the current record's "Bitstream" value
- * @method Epersongroup        getEpersongroup()                       Returns the current record's "Epersongroup" value
- * @method Doctrine_Collection getCommunity2collections()              Returns the current record's "Community2collections" collection
- * @method Doctrine_Collection getCommunity2communitysForParentComm()  Returns the current record's "Community2communitys_ForParentComm" collection
- * @method Doctrine_Collection getCommunity2communitysForChildComm()   Returns the current record's "Community2communitys_ForChildComm" collection
- * @method Doctrine_Collection getCommunityItemCounts()                Returns the current record's "CommunityItemCounts" collection
- * @method Doctrine_Collection getCommunities2items()                  Returns the current record's "Communities2items" collection
- * @method Community           setCommunityId()                        Sets the current record's "community_id" value
- * @method Community           setName()                               Sets the current record's "name" value
- * @method Community           setShortDescription()                   Sets the current record's "short_description" value
- * @method Community           setIntroductoryText()                   Sets the current record's "introductory_text" value
- * @method Community           setLogoBitstreamId()                    Sets the current record's "logo_bitstream_id" value
- * @method Community           setCopyrightText()                      Sets the current record's "copyright_text" value
- * @method Community           setSideBarText()                        Sets the current record's "side_bar_text" value
- * @method Community           setAdmin()                              Sets the current record's "admin" value
- * @method Community           setBitstream()                          Sets the current record's "Bitstream" value
- * @method Community           setEpersongroup()                       Sets the current record's "Epersongroup" value
- * @method Community           setCommunity2collections()              Sets the current record's "Community2collections" collection
- * @method Community           setCommunity2communitysForParentComm()  Sets the current record's "Community2communitys_ForParentComm" collection
- * @method Community           setCommunity2communitysForChildComm()   Sets the current record's "Community2communitys_ForChildComm" collection
- * @method Community           setCommunityItemCounts()                Sets the current record's "CommunityItemCounts" collection
- * @method Community           setCommunities2items()                  Sets the current record's "Communities2items" collection
+ * @method integer             getCommunityId()          Returns the current record's "community_id" value
+ * @method string              getName()                 Returns the current record's "name" value
+ * @method string              getShortDescription()     Returns the current record's "short_description" value
+ * @method string              getIntroductoryText()     Returns the current record's "introductory_text" value
+ * @method integer             getLogoBitstreamId()      Returns the current record's "logo_bitstream_id" value
+ * @method string              getCopyrightText()        Returns the current record's "copyright_text" value
+ * @method string              getSideBarText()          Returns the current record's "side_bar_text" value
+ * @method integer             getAdmin()                Returns the current record's "admin" value
+ * @method Bitstream           getLogoBitstream()        Returns the current record's "LogoBitstream" value
+ * @method Epersongroup        getEpersongroup()         Returns the current record's "Epersongroup" value
+ * @method Doctrine_Collection getCollections()          Returns the current record's "Collections" collection
+ * @method Doctrine_Collection getParentCommunities()    Returns the current record's "ParentCommunities" collection
+ * @method Doctrine_Collection getChildCommunities()     Returns the current record's "ChildCommunities" collection
+ * @method Doctrine_Collection getCommunityItemCounts()  Returns the current record's "CommunityItemCounts" collection
+ * @method Doctrine_Collection getItems()                Returns the current record's "Items" collection
+ * @method Doctrine_Collection getCommunities2item()     Returns the current record's "Communities2item" collection
+ * @method Doctrine_Collection getCommunity2collection() Returns the current record's "Community2collection" collection
+ * @method Doctrine_Collection getCommunity2community()  Returns the current record's "Community2community" collection
+ * @method Community           setCommunityId()          Sets the current record's "community_id" value
+ * @method Community           setName()                 Sets the current record's "name" value
+ * @method Community           setShortDescription()     Sets the current record's "short_description" value
+ * @method Community           setIntroductoryText()     Sets the current record's "introductory_text" value
+ * @method Community           setLogoBitstreamId()      Sets the current record's "logo_bitstream_id" value
+ * @method Community           setCopyrightText()        Sets the current record's "copyright_text" value
+ * @method Community           setSideBarText()          Sets the current record's "side_bar_text" value
+ * @method Community           setAdmin()                Sets the current record's "admin" value
+ * @method Community           setLogoBitstream()        Sets the current record's "LogoBitstream" value
+ * @method Community           setEpersongroup()         Sets the current record's "Epersongroup" value
+ * @method Community           setCollections()          Sets the current record's "Collections" collection
+ * @method Community           setParentCommunities()    Sets the current record's "ParentCommunities" collection
+ * @method Community           setChildCommunities()     Sets the current record's "ChildCommunities" collection
+ * @method Community           setCommunityItemCounts()  Sets the current record's "CommunityItemCounts" collection
+ * @method Community           setItems()                Sets the current record's "Items" collection
+ * @method Community           setCommunities2item()     Sets the current record's "Communities2item" collection
+ * @method Community           setCommunity2collection() Sets the current record's "Community2collection" collection
+ * @method Community           setCommunity2community()  Sets the current record's "Community2community" collection
  * 
  * @package    dspace
  * @subpackage model
@@ -132,7 +141,7 @@ abstract class BaseCommunity extends BaseDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Bitstream', array(
+        $this->hasOne('Bitstream as LogoBitstream', array(
              'local' => 'logo_bitstream_id',
              'foreign' => 'bitstream_id'));
 
@@ -140,24 +149,40 @@ abstract class BaseCommunity extends BaseDoctrineRecord
              'local' => 'admin',
              'foreign' => 'eperson_group_id'));
 
-        $this->hasMany('Community2collection as Community2collections', array(
+        $this->hasMany('Collection as Collections', array(
+             'refClass' => 'Community2collection',
              'local' => 'community_id',
-             'foreign' => 'community_id'));
+             'foreign' => 'collection_id'));
 
-        $this->hasMany('Community2community as Community2communitys_ForParentComm', array(
-             'local' => 'community_id',
+        $this->hasMany('Community as ParentCommunities', array(
+             'refClass' => 'Community2community',
+             'local' => 'child_comm_id',
              'foreign' => 'parent_comm_id'));
 
-        $this->hasMany('Community2community as Community2communitys_ForChildComm', array(
-             'local' => 'community_id',
+        $this->hasMany('Community as ChildCommunities', array(
+             'refClass' => 'Community2community',
+             'local' => 'parent_comm_id',
              'foreign' => 'child_comm_id'));
 
         $this->hasMany('CommunityItemCount as CommunityItemCounts', array(
              'local' => 'community_id',
              'foreign' => 'community_id'));
 
-        $this->hasMany('Communities2item as Communities2items', array(
+        $this->hasMany('Item as Items', array(
+             'refClass' => 'Communities2item',
+             'local' => 'community_id',
+             'foreign' => 'item_id'));
+
+        $this->hasMany('Communities2item', array(
              'local' => 'community_id',
              'foreign' => 'community_id'));
+
+        $this->hasMany('Community2collection', array(
+             'local' => 'community_id',
+             'foreign' => 'community_id'));
+
+        $this->hasMany('Community2community', array(
+             'local' => 'community_id',
+             'foreign' => 'parent_comm_id'));
     }
 }

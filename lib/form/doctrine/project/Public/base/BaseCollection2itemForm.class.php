@@ -17,13 +17,13 @@ abstract class BaseCollection2itemForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'            => new sfWidgetFormInputHidden(),
       'collection_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Collection'), 'add_empty' => true)),
-      'item_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Item_ForItem'), 'add_empty' => true)),
+      'item_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Item'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
       'id'            => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'id', 'required' => false)),
       'collection_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Collection'), 'required' => false)),
-      'item_id'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Item_ForItem'), 'required' => false)),
+      'item_id'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Item'), 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('collection2item[%s]');

@@ -13,13 +13,13 @@ abstract class BaseCommunity2communityFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'parent_comm_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Community_ForParentComm'), 'add_empty' => true)),
-      'child_comm_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Community_ForChildComm'), 'add_empty' => true)),
+      'parent_comm_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ParentCommunity'), 'add_empty' => true)),
+      'child_comm_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ChildCommunity'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
-      'parent_comm_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Community_ForParentComm'), 'column' => 'community_id')),
-      'child_comm_id'  => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Community_ForChildComm'), 'column' => 'community_id')),
+      'parent_comm_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('ParentCommunity'), 'column' => 'community_id')),
+      'child_comm_id'  => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('ChildCommunity'), 'column' => 'community_id')),
     ));
 
     $this->widgetSchema->setNameFormat('community2community_filters[%s]');

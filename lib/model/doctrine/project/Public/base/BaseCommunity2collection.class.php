@@ -10,19 +10,19 @@ Doctrine_Manager::getInstance()->bindComponent('Community2collection', 'doctrine
  * @property integer $id
  * @property integer $community_id
  * @property integer $collection_id
- * @property Collection $Collection_ForCollection as Collection
  * @property Community $Community
+ * @property Collection $Collection
  * 
- * @method integer              getId()                       Returns the current record's "id" value
- * @method integer              getCommunityId()              Returns the current record's "community_id" value
- * @method integer              getCollectionId()             Returns the current record's "collection_id" value
- * @method Collection           getCollectionForCollection()  Returns the current record's "Collection_ForCollection" value
- * @method Community            getCommunity()                Returns the current record's "Community" value
- * @method Community2collection setId()                       Sets the current record's "id" value
- * @method Community2collection setCommunityId()              Sets the current record's "community_id" value
- * @method Community2collection setCollectionId()             Sets the current record's "collection_id" value
- * @method Community2collection setCollectionForCollection()  Sets the current record's "Collection_ForCollection" value
- * @method Community2collection setCommunity()                Sets the current record's "Community" value
+ * @method integer              getId()            Returns the current record's "id" value
+ * @method integer              getCommunityId()   Returns the current record's "community_id" value
+ * @method integer              getCollectionId()  Returns the current record's "collection_id" value
+ * @method Community            getCommunity()     Returns the current record's "Community" value
+ * @method Collection           getCollection()    Returns the current record's "Collection" value
+ * @method Community2collection setId()            Sets the current record's "id" value
+ * @method Community2collection setCommunityId()   Sets the current record's "community_id" value
+ * @method Community2collection setCollectionId()  Sets the current record's "collection_id" value
+ * @method Community2collection setCommunity()     Sets the current record's "Community" value
+ * @method Community2collection setCollection()    Sets the current record's "Collection" value
  * 
  * @package    dspace
  * @subpackage model
@@ -62,12 +62,12 @@ abstract class BaseCommunity2collection extends BaseDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Collection as Collection_ForCollection as Collection', array(
-             'local' => 'collection_id',
-             'foreign' => 'collection_id'));
-
         $this->hasOne('Community', array(
              'local' => 'community_id',
              'foreign' => 'community_id'));
+
+        $this->hasOne('Collection', array(
+             'local' => 'collection_id',
+             'foreign' => 'collection_id'));
     }
 }

@@ -1,7 +1,7 @@
 <h2><?php echo $community->getName() ?></h2>
 
-<?php if($community->Bitstream != null): ?>
-<img style="float:right; "src="https://kb.osu.edu/dspace/retrieve/<?php echo $community->Bitstream->bitstream_id; ?>"/>
+<?php if($community->LogoBitstream != null): ?>
+<img style="float:right; "src="https://kb.osu.edu/dspace/retrieve/<?php echo $community->LogoBitstream->bitstream_id; ?>"/>
 <?php endif; ?>
 <?php echo html_entity_decode($community->getIntroductoryText()) ?>
 
@@ -12,10 +12,10 @@
 <?php if(count($subcommunities) > 0): ?>
 <h3>Sub-communities within this community</h3>
 <ul>
-<?php foreach($subcommunities as $com2com): ?>
+<?php foreach($subcommunities as $subcommunity): ?>
     <li>
-    <a href="<?php echo url_for('communities/show?community_id='.$com2com->child_comm_id); ?>">
-    <?php echo $com2com->Community_ForChildComm->name; ?></a>
+    <a href="<?php echo url_for('communities/show?community_id='.$subcommunity->community_id); ?>">
+    <?php echo $subcommunity->name; ?></a>
 
     </li>
 <?php endforeach; ?>
@@ -32,9 +32,3 @@
 <?php endforeach; ?>
 </ul>
 <?php endif; ?>
-
-<hr />
-
-<a href="<?php echo url_for('communities/edit?community_id='.$community->getCommunityId()) ?>">Edit</a>
-&nbsp;
-<a href="<?php echo url_for('communities/index') ?>">List</a>

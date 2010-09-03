@@ -1,4 +1,4 @@
-<h2><?php echo $item->metadata['dc.title']; ?></h2>
+<h3><?php echo $item->metadata['dc.title']; ?></h3>
 
 <table>
 <?php foreach($item->metadata as $name=>$value): ?>
@@ -23,7 +23,7 @@
 <a href="https://kb.osu.edu/dspace/bitstream/1811/<?php echo $handle_id; ?>/<?php echo $bitstream->sequence_id;?>/<?php echo $bitstream->getName(); ?>">
 <?php echo $bitstream->getName(); ?> 
 </a> -
-        <?php echo $bitstream->Bitstreamformatregistry->short_description; ?>
+        <?php echo $bitstream->Format->short_description; ?>
 
         
 

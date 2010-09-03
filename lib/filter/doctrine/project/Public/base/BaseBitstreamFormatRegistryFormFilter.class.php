@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Bitstreamformatregistry filter form base class.
+ * BitstreamFormatRegistry filter form base class.
  *
  * @package    dspace
  * @subpackage filter
  * @author     Your name here
  * @version    SVN: $Id: sfDoctrineFormFilterGeneratedTemplate.php 29570 2010-05-21 14:49:47Z Kris.Wallsmith $
  */
-abstract class BaseBitstreamformatregistryFormFilter extends BaseFormFilterDoctrine
+abstract class BaseBitstreamFormatRegistryFormFilter extends BaseFormFilterDoctrine
 {
   public function setup()
   {
@@ -28,7 +28,7 @@ abstract class BaseBitstreamformatregistryFormFilter extends BaseFormFilterDoctr
       'internal'            => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
     ));
 
-    $this->widgetSchema->setNameFormat('bitstreamformatregistry_filters[%s]');
+    $this->widgetSchema->setNameFormat('bitstream_format_registry_filters[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -39,7 +39,7 @@ abstract class BaseBitstreamformatregistryFormFilter extends BaseFormFilterDoctr
 
   public function getModelName()
   {
-    return 'Bitstreamformatregistry';
+    return 'BitstreamFormatRegistry';
   }
 
   public function getFields()

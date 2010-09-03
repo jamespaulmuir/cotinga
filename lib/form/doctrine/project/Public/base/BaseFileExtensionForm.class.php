@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Fileextension form base class.
+ * FileExtension form base class.
  *
- * @method Fileextension getObject() Returns the current form's model object
+ * @method FileExtension getObject() Returns the current form's model object
  *
  * @package    dspace
  * @subpackage form
  * @author     Your name here
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
-abstract class BaseFileextensionForm extends BaseFormDoctrine
+abstract class BaseFileExtensionForm extends BaseFormDoctrine
 {
   public function setup()
   {
@@ -26,7 +26,7 @@ abstract class BaseFileextensionForm extends BaseFormDoctrine
       'extension'           => new sfValidatorString(array('required' => false)),
     ));
 
-    $this->widgetSchema->setNameFormat('fileextension[%s]');
+    $this->widgetSchema->setNameFormat('file_extension[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -37,7 +37,7 @@ abstract class BaseFileextensionForm extends BaseFormDoctrine
 
   public function getModelName()
   {
-    return 'Fileextension';
+    return 'FileExtension';
   }
 
 }

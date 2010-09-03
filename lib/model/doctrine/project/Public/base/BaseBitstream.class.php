@@ -20,12 +20,13 @@ Doctrine_Manager::getInstance()->bindComponent('Bitstream', 'doctrine');
  * @property integer $store_number
  * @property integer $sequence_id
  * @property integer $size_bytes
- * @property Bitstreamformatregistry $Bitstreamformatregistry
- * @property Doctrine_Collection $Bundles
+ * @property BitstreamFormatRegistry $Format
+ * @property Doctrine_Collection $BundlePrimary
  * @property Doctrine_Collection $MostRecentChecksums
- * @property Doctrine_Collection $Bundle2bitstreams
- * @property Doctrine_Collection $Collections
- * @property Doctrine_Collection $Communitys
+ * @property Doctrine_Collection $Bundles
+ * @property Doctrine_Collection $CollectionsLogo
+ * @property Doctrine_Collection $CommunitiesLogo
+ * @property Doctrine_Collection $Bundle2bitstream
  * 
  * @method integer                 getBitstreamId()             Returns the current record's "bitstream_id" value
  * @method integer                 getBitstreamFormatId()       Returns the current record's "bitstream_format_id" value
@@ -40,12 +41,13 @@ Doctrine_Manager::getInstance()->bindComponent('Bitstream', 'doctrine');
  * @method integer                 getStoreNumber()             Returns the current record's "store_number" value
  * @method integer                 getSequenceId()              Returns the current record's "sequence_id" value
  * @method integer                 getSizeBytes()               Returns the current record's "size_bytes" value
- * @method Bitstreamformatregistry getBitstreamformatregistry() Returns the current record's "Bitstreamformatregistry" value
- * @method Doctrine_Collection     getBundles()                 Returns the current record's "Bundles" collection
+ * @method BitstreamFormatRegistry getFormat()                  Returns the current record's "Format" value
+ * @method Doctrine_Collection     getBundlePrimary()           Returns the current record's "BundlePrimary" collection
  * @method Doctrine_Collection     getMostRecentChecksums()     Returns the current record's "MostRecentChecksums" collection
- * @method Doctrine_Collection     getBundle2bitstreams()       Returns the current record's "Bundle2bitstreams" collection
- * @method Doctrine_Collection     getCollections()             Returns the current record's "Collections" collection
- * @method Doctrine_Collection     getCommunitys()              Returns the current record's "Communitys" collection
+ * @method Doctrine_Collection     getBundles()                 Returns the current record's "Bundles" collection
+ * @method Doctrine_Collection     getCollectionsLogo()         Returns the current record's "CollectionsLogo" collection
+ * @method Doctrine_Collection     getCommunitiesLogo()         Returns the current record's "CommunitiesLogo" collection
+ * @method Doctrine_Collection     getBundle2bitstream()        Returns the current record's "Bundle2bitstream" collection
  * @method Bitstream               setBitstreamId()             Sets the current record's "bitstream_id" value
  * @method Bitstream               setBitstreamFormatId()       Sets the current record's "bitstream_format_id" value
  * @method Bitstream               setName()                    Sets the current record's "name" value
@@ -59,12 +61,13 @@ Doctrine_Manager::getInstance()->bindComponent('Bitstream', 'doctrine');
  * @method Bitstream               setStoreNumber()             Sets the current record's "store_number" value
  * @method Bitstream               setSequenceId()              Sets the current record's "sequence_id" value
  * @method Bitstream               setSizeBytes()               Sets the current record's "size_bytes" value
- * @method Bitstream               setBitstreamformatregistry() Sets the current record's "Bitstreamformatregistry" value
- * @method Bitstream               setBundles()                 Sets the current record's "Bundles" collection
+ * @method Bitstream               setFormat()                  Sets the current record's "Format" value
+ * @method Bitstream               setBundlePrimary()           Sets the current record's "BundlePrimary" collection
  * @method Bitstream               setMostRecentChecksums()     Sets the current record's "MostRecentChecksums" collection
- * @method Bitstream               setBundle2bitstreams()       Sets the current record's "Bundle2bitstreams" collection
- * @method Bitstream               setCollections()             Sets the current record's "Collections" collection
- * @method Bitstream               setCommunitys()              Sets the current record's "Communitys" collection
+ * @method Bitstream               setBundles()                 Sets the current record's "Bundles" collection
+ * @method Bitstream               setCollectionsLogo()         Sets the current record's "CollectionsLogo" collection
+ * @method Bitstream               setCommunitiesLogo()         Sets the current record's "CommunitiesLogo" collection
+ * @method Bitstream               setBundle2bitstream()        Sets the current record's "Bundle2bitstream" collection
  * 
  * @package    dspace
  * @subpackage model
@@ -184,11 +187,11 @@ abstract class BaseBitstream extends BaseDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Bitstreamformatregistry', array(
+        $this->hasOne('BitstreamFormatRegistry as Format', array(
              'local' => 'bitstream_format_id',
              'foreign' => 'bitstream_format_id'));
 
-        $this->hasMany('Bundle as Bundles', array(
+        $this->hasMany('Bundle as BundlePrimary', array(
              'local' => 'bitstream_id',
              'foreign' => 'primary_bitstream_id'));
 
@@ -196,16 +199,21 @@ abstract class BaseBitstream extends BaseDoctrineRecord
              'local' => 'bitstream_id',
              'foreign' => 'bitstream_id'));
 
-        $this->hasMany('Bundle2bitstream as Bundle2bitstreams', array(
+        $this->hasMany('Bundle as Bundles', array(
+             'refClass' => 'Bundle2bitstream',
+             'local' => 'bitstream_id',
+             'foreign' => 'bundle_id'));
+
+        $this->hasMany('Collection as CollectionsLogo', array(
+             'local' => 'bitstream_id',
+             'foreign' => 'logo_bitstream_id'));
+
+        $this->hasMany('Community as CommunitiesLogo', array(
+             'local' => 'bitstream_id',
+             'foreign' => 'logo_bitstream_id'));
+
+        $this->hasMany('Bundle2bitstream', array(
              'local' => 'bitstream_id',
              'foreign' => 'bitstream_id'));
-
-        $this->hasMany('Collection as Collections', array(
-             'local' => 'bitstream_id',
-             'foreign' => 'logo_bitstream_id'));
-
-        $this->hasMany('Community as Communitys', array(
-             'local' => 'bitstream_id',
-             'foreign' => 'logo_bitstream_id'));
     }
 }

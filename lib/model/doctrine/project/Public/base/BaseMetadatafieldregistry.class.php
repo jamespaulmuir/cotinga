@@ -12,23 +12,23 @@ Doctrine_Manager::getInstance()->bindComponent('Metadatafieldregistry', 'doctrin
  * @property string $element
  * @property string $qualifier
  * @property string $scope_note
- * @property Metadataschemaregistry $Metadataschemaregistry
+ * @property Metadataschemaregistry $MetadataSchema
  * @property Doctrine_Collection $Metadatavalues
  * 
- * @method integer                getMetadataFieldId()        Returns the current record's "metadata_field_id" value
- * @method integer                getMetadataSchemaId()       Returns the current record's "metadata_schema_id" value
- * @method string                 getElement()                Returns the current record's "element" value
- * @method string                 getQualifier()              Returns the current record's "qualifier" value
- * @method string                 getScopeNote()              Returns the current record's "scope_note" value
- * @method Metadataschemaregistry getMetadataschemaregistry() Returns the current record's "Metadataschemaregistry" value
- * @method Doctrine_Collection    getMetadatavalues()         Returns the current record's "Metadatavalues" collection
- * @method Metadatafieldregistry  setMetadataFieldId()        Sets the current record's "metadata_field_id" value
- * @method Metadatafieldregistry  setMetadataSchemaId()       Sets the current record's "metadata_schema_id" value
- * @method Metadatafieldregistry  setElement()                Sets the current record's "element" value
- * @method Metadatafieldregistry  setQualifier()              Sets the current record's "qualifier" value
- * @method Metadatafieldregistry  setScopeNote()              Sets the current record's "scope_note" value
- * @method Metadatafieldregistry  setMetadataschemaregistry() Sets the current record's "Metadataschemaregistry" value
- * @method Metadatafieldregistry  setMetadatavalues()         Sets the current record's "Metadatavalues" collection
+ * @method integer                getMetadataFieldId()    Returns the current record's "metadata_field_id" value
+ * @method integer                getMetadataSchemaId()   Returns the current record's "metadata_schema_id" value
+ * @method string                 getElement()            Returns the current record's "element" value
+ * @method string                 getQualifier()          Returns the current record's "qualifier" value
+ * @method string                 getScopeNote()          Returns the current record's "scope_note" value
+ * @method Metadataschemaregistry getMetadataSchema()     Returns the current record's "MetadataSchema" value
+ * @method Doctrine_Collection    getMetadatavalues()     Returns the current record's "Metadatavalues" collection
+ * @method Metadatafieldregistry  setMetadataFieldId()    Sets the current record's "metadata_field_id" value
+ * @method Metadatafieldregistry  setMetadataSchemaId()   Sets the current record's "metadata_schema_id" value
+ * @method Metadatafieldregistry  setElement()            Sets the current record's "element" value
+ * @method Metadatafieldregistry  setQualifier()          Sets the current record's "qualifier" value
+ * @method Metadatafieldregistry  setScopeNote()          Sets the current record's "scope_note" value
+ * @method Metadatafieldregistry  setMetadataSchema()     Sets the current record's "MetadataSchema" value
+ * @method Metadatafieldregistry  setMetadatavalues()     Sets the current record's "Metadatavalues" collection
  * 
  * @package    dspace
  * @subpackage model
@@ -84,7 +84,7 @@ abstract class BaseMetadatafieldregistry extends BaseDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Metadataschemaregistry', array(
+        $this->hasOne('Metadataschemaregistry as MetadataSchema', array(
              'local' => 'metadata_schema_id',
              'foreign' => 'metadata_schema_id'));
 

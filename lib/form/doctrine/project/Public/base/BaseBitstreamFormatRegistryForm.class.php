@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Bitstreamformatregistry form base class.
+ * BitstreamFormatRegistry form base class.
  *
- * @method Bitstreamformatregistry getObject() Returns the current form's model object
+ * @method BitstreamFormatRegistry getObject() Returns the current form's model object
  *
  * @package    dspace
  * @subpackage form
  * @author     Your name here
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
-abstract class BaseBitstreamformatregistryForm extends BaseFormDoctrine
+abstract class BaseBitstreamFormatRegistryForm extends BaseFormDoctrine
 {
   public function setup()
   {
@@ -32,7 +32,7 @@ abstract class BaseBitstreamformatregistryForm extends BaseFormDoctrine
       'internal'            => new sfValidatorBoolean(array('required' => false)),
     ));
 
-    $this->widgetSchema->setNameFormat('bitstreamformatregistry[%s]');
+    $this->widgetSchema->setNameFormat('bitstream_format_registry[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -43,7 +43,7 @@ abstract class BaseBitstreamformatregistryForm extends BaseFormDoctrine
 
   public function getModelName()
   {
-    return 'Bitstreamformatregistry';
+    return 'BitstreamFormatRegistry';
   }
 
 }

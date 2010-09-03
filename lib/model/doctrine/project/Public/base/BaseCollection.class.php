@@ -22,21 +22,22 @@ Doctrine_Manager::getInstance()->bindComponent('Collection', 'doctrine');
  * @property integer $workflow_step_3
  * @property integer $submitter
  * @property integer $admin
- * @property Bitstream $Bitstream
- * @property Item $Item
+ * @property Bitstream $LogoBitstream
+ * @property Item $TemplateItem
  * @property Epersongroup $Epersongroup_ForWorkflowStep1
  * @property Epersongroup $Epersongroup_ForWorkflowStep2
  * @property Epersongroup $Epersongroup_ForWorkflowStep3
  * @property Epersongroup $Epersongroup_ForAdmin
  * @property Epersongroup $Epersongroup_ForSubmitter
  * @property Doctrine_Collection $Subscriptions
- * @property Doctrine_Collection $Community2collections
- * @property Doctrine_Collection $Collection2items
+ * @property Doctrine_Collection $Communities
  * @property Doctrine_Collection $CollectionItemCounts
  * @property Doctrine_Collection $Workflowitems
  * @property Doctrine_Collection $HarvestedCollections
  * @property Doctrine_Collection $Workspaceitems
  * @property Doctrine_Collection $Items
+ * @property Doctrine_Collection $Collection2item
+ * @property Doctrine_Collection $Community2collection
  * 
  * @method integer             getCollectionId()                  Returns the current record's "collection_id" value
  * @method string              getName()                          Returns the current record's "name" value
@@ -53,21 +54,22 @@ Doctrine_Manager::getInstance()->bindComponent('Collection', 'doctrine');
  * @method integer             getWorkflowStep3()                 Returns the current record's "workflow_step_3" value
  * @method integer             getSubmitter()                     Returns the current record's "submitter" value
  * @method integer             getAdmin()                         Returns the current record's "admin" value
- * @method Bitstream           getBitstream()                     Returns the current record's "Bitstream" value
- * @method Item                getItem()                          Returns the current record's "Item" value
+ * @method Bitstream           getLogoBitstream()                 Returns the current record's "LogoBitstream" value
+ * @method Item                getTemplateItem()                  Returns the current record's "TemplateItem" value
  * @method Epersongroup        getEpersongroupForWorkflowStep1()  Returns the current record's "Epersongroup_ForWorkflowStep1" value
  * @method Epersongroup        getEpersongroupForWorkflowStep2()  Returns the current record's "Epersongroup_ForWorkflowStep2" value
  * @method Epersongroup        getEpersongroupForWorkflowStep3()  Returns the current record's "Epersongroup_ForWorkflowStep3" value
  * @method Epersongroup        getEpersongroupForAdmin()          Returns the current record's "Epersongroup_ForAdmin" value
  * @method Epersongroup        getEpersongroupForSubmitter()      Returns the current record's "Epersongroup_ForSubmitter" value
  * @method Doctrine_Collection getSubscriptions()                 Returns the current record's "Subscriptions" collection
- * @method Doctrine_Collection getCommunity2collections()         Returns the current record's "Community2collections" collection
- * @method Doctrine_Collection getCollection2items()              Returns the current record's "Collection2items" collection
+ * @method Doctrine_Collection getCommunities()                   Returns the current record's "Communities" collection
  * @method Doctrine_Collection getCollectionItemCounts()          Returns the current record's "CollectionItemCounts" collection
  * @method Doctrine_Collection getWorkflowitems()                 Returns the current record's "Workflowitems" collection
  * @method Doctrine_Collection getHarvestedCollections()          Returns the current record's "HarvestedCollections" collection
  * @method Doctrine_Collection getWorkspaceitems()                Returns the current record's "Workspaceitems" collection
  * @method Doctrine_Collection getItems()                         Returns the current record's "Items" collection
+ * @method Doctrine_Collection getCollection2item()               Returns the current record's "Collection2item" collection
+ * @method Doctrine_Collection getCommunity2collection()          Returns the current record's "Community2collection" collection
  * @method Collection          setCollectionId()                  Sets the current record's "collection_id" value
  * @method Collection          setName()                          Sets the current record's "name" value
  * @method Collection          setShortDescription()              Sets the current record's "short_description" value
@@ -83,21 +85,22 @@ Doctrine_Manager::getInstance()->bindComponent('Collection', 'doctrine');
  * @method Collection          setWorkflowStep3()                 Sets the current record's "workflow_step_3" value
  * @method Collection          setSubmitter()                     Sets the current record's "submitter" value
  * @method Collection          setAdmin()                         Sets the current record's "admin" value
- * @method Collection          setBitstream()                     Sets the current record's "Bitstream" value
- * @method Collection          setItem()                          Sets the current record's "Item" value
+ * @method Collection          setLogoBitstream()                 Sets the current record's "LogoBitstream" value
+ * @method Collection          setTemplateItem()                  Sets the current record's "TemplateItem" value
  * @method Collection          setEpersongroupForWorkflowStep1()  Sets the current record's "Epersongroup_ForWorkflowStep1" value
  * @method Collection          setEpersongroupForWorkflowStep2()  Sets the current record's "Epersongroup_ForWorkflowStep2" value
  * @method Collection          setEpersongroupForWorkflowStep3()  Sets the current record's "Epersongroup_ForWorkflowStep3" value
  * @method Collection          setEpersongroupForAdmin()          Sets the current record's "Epersongroup_ForAdmin" value
  * @method Collection          setEpersongroupForSubmitter()      Sets the current record's "Epersongroup_ForSubmitter" value
  * @method Collection          setSubscriptions()                 Sets the current record's "Subscriptions" collection
- * @method Collection          setCommunity2collections()         Sets the current record's "Community2collections" collection
- * @method Collection          setCollection2items()              Sets the current record's "Collection2items" collection
+ * @method Collection          setCommunities()                   Sets the current record's "Communities" collection
  * @method Collection          setCollectionItemCounts()          Sets the current record's "CollectionItemCounts" collection
  * @method Collection          setWorkflowitems()                 Sets the current record's "Workflowitems" collection
  * @method Collection          setHarvestedCollections()          Sets the current record's "HarvestedCollections" collection
  * @method Collection          setWorkspaceitems()                Sets the current record's "Workspaceitems" collection
  * @method Collection          setItems()                         Sets the current record's "Items" collection
+ * @method Collection          setCollection2item()               Sets the current record's "Collection2item" collection
+ * @method Collection          setCommunity2collection()          Sets the current record's "Community2collection" collection
  * 
  * @package    dspace
  * @subpackage model
@@ -233,11 +236,11 @@ abstract class BaseCollection extends BaseDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Bitstream', array(
+        $this->hasOne('Bitstream as LogoBitstream', array(
              'local' => 'logo_bitstream_id',
              'foreign' => 'bitstream_id'));
 
-        $this->hasOne('Item', array(
+        $this->hasOne('Item as TemplateItem', array(
              'local' => 'template_item_id',
              'foreign' => 'item_id'));
 
@@ -265,13 +268,10 @@ abstract class BaseCollection extends BaseDoctrineRecord
              'local' => 'collection_id',
              'foreign' => 'collection_id'));
 
-        $this->hasMany('Community2collection as Community2collections', array(
+        $this->hasMany('Community as Communities', array(
+             'refClass' => 'Community2collection',
              'local' => 'collection_id',
-             'foreign' => 'collection_id'));
-
-        $this->hasMany('Collection2item as Collection2items', array(
-             'local' => 'collection_id',
-             'foreign' => 'collection_id'));
+             'foreign' => 'community_id'));
 
         $this->hasMany('CollectionItemCount as CollectionItemCounts', array(
              'local' => 'collection_id',
@@ -293,5 +293,13 @@ abstract class BaseCollection extends BaseDoctrineRecord
              'refClass' => 'Collection2item',
              'local' => 'collection_id',
              'foreign' => 'item_id'));
+
+        $this->hasMany('Collection2item', array(
+             'local' => 'collection_id',
+             'foreign' => 'collection_id'));
+
+        $this->hasMany('Community2collection', array(
+             'local' => 'collection_id',
+             'foreign' => 'collection_id'));
     }
 }

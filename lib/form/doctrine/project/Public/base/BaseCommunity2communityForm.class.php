@@ -16,14 +16,14 @@ abstract class BaseCommunity2communityForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'             => new sfWidgetFormInputHidden(),
-      'parent_comm_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Community_ForParentComm'), 'add_empty' => true)),
-      'child_comm_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Community_ForChildComm'), 'add_empty' => true)),
+      'parent_comm_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ParentCommunity'), 'add_empty' => true)),
+      'child_comm_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ChildCommunity'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
       'id'             => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'id', 'required' => false)),
-      'parent_comm_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Community_ForParentComm'), 'required' => false)),
-      'child_comm_id'  => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Community_ForChildComm'), 'required' => false)),
+      'parent_comm_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('ParentCommunity'), 'required' => false)),
+      'child_comm_id'  => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('ChildCommunity'), 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('community2community[%s]');

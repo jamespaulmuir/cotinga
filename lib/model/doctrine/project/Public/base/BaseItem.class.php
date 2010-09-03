@@ -18,56 +18,62 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property Doctrine_Collection $HarvestedItems
  * @property Doctrine_Collection $BiWithdrawns
  * @property Doctrine_Collection $Bi2Dmaps
+ * @property Doctrine_Collection $CollectionsTemplateFor
+ * @property Doctrine_Collection $Bundles
  * @property Doctrine_Collection $Collections
- * @property Doctrine_Collection $Item2bundles
- * @property Doctrine_Collection $Collection2items
  * @property Doctrine_Collection $Metadatavalues
  * @property Doctrine_Collection $Bi4Dmaps
  * @property Doctrine_Collection $Workflowitems
- * @property Doctrine_Collection $Communities2items
+ * @property Doctrine_Collection $Communities
  * @property Doctrine_Collection $Workspaceitems
- * @property Doctrine_Collection $Bundle
+ * @property Doctrine_Collection $Collection2item
+ * @property Doctrine_Collection $Communities2item
+ * @property Doctrine_Collection $Item2bundle
  * 
- * @method integer             getItemId()            Returns the current record's "item_id" value
- * @method integer             getSubmitterId()       Returns the current record's "submitter_id" value
- * @method boolean             getInArchive()         Returns the current record's "in_archive" value
- * @method boolean             getWithdrawn()         Returns the current record's "withdrawn" value
- * @method integer             getOwningCollection()  Returns the current record's "owning_collection" value
- * @method timestamp           getLastModified()      Returns the current record's "last_modified" value
- * @method Eperson             getEperson()           Returns the current record's "Eperson" value
- * @method Doctrine_Collection getBiItems()           Returns the current record's "BiItems" collection
- * @method Doctrine_Collection getHarvestedItems()    Returns the current record's "HarvestedItems" collection
- * @method Doctrine_Collection getBiWithdrawns()      Returns the current record's "BiWithdrawns" collection
- * @method Doctrine_Collection getBi2Dmaps()          Returns the current record's "Bi2Dmaps" collection
- * @method Doctrine_Collection getCollections()       Returns the current record's "Collections" collection
- * @method Doctrine_Collection getItem2bundles()      Returns the current record's "Item2bundles" collection
- * @method Doctrine_Collection getCollection2items()  Returns the current record's "Collection2items" collection
- * @method Doctrine_Collection getMetadatavalues()    Returns the current record's "Metadatavalues" collection
- * @method Doctrine_Collection getBi4Dmaps()          Returns the current record's "Bi4Dmaps" collection
- * @method Doctrine_Collection getWorkflowitems()     Returns the current record's "Workflowitems" collection
- * @method Doctrine_Collection getCommunities2items() Returns the current record's "Communities2items" collection
- * @method Doctrine_Collection getWorkspaceitems()    Returns the current record's "Workspaceitems" collection
- * @method Doctrine_Collection getBundle()            Returns the current record's "Bundle" collection
- * @method Item                setItemId()            Sets the current record's "item_id" value
- * @method Item                setSubmitterId()       Sets the current record's "submitter_id" value
- * @method Item                setInArchive()         Sets the current record's "in_archive" value
- * @method Item                setWithdrawn()         Sets the current record's "withdrawn" value
- * @method Item                setOwningCollection()  Sets the current record's "owning_collection" value
- * @method Item                setLastModified()      Sets the current record's "last_modified" value
- * @method Item                setEperson()           Sets the current record's "Eperson" value
- * @method Item                setBiItems()           Sets the current record's "BiItems" collection
- * @method Item                setHarvestedItems()    Sets the current record's "HarvestedItems" collection
- * @method Item                setBiWithdrawns()      Sets the current record's "BiWithdrawns" collection
- * @method Item                setBi2Dmaps()          Sets the current record's "Bi2Dmaps" collection
- * @method Item                setCollections()       Sets the current record's "Collections" collection
- * @method Item                setItem2bundles()      Sets the current record's "Item2bundles" collection
- * @method Item                setCollection2items()  Sets the current record's "Collection2items" collection
- * @method Item                setMetadatavalues()    Sets the current record's "Metadatavalues" collection
- * @method Item                setBi4Dmaps()          Sets the current record's "Bi4Dmaps" collection
- * @method Item                setWorkflowitems()     Sets the current record's "Workflowitems" collection
- * @method Item                setCommunities2items() Sets the current record's "Communities2items" collection
- * @method Item                setWorkspaceitems()    Sets the current record's "Workspaceitems" collection
- * @method Item                setBundle()            Sets the current record's "Bundle" collection
+ * @method integer             getItemId()                 Returns the current record's "item_id" value
+ * @method integer             getSubmitterId()            Returns the current record's "submitter_id" value
+ * @method boolean             getInArchive()              Returns the current record's "in_archive" value
+ * @method boolean             getWithdrawn()              Returns the current record's "withdrawn" value
+ * @method integer             getOwningCollection()       Returns the current record's "owning_collection" value
+ * @method timestamp           getLastModified()           Returns the current record's "last_modified" value
+ * @method Eperson             getEperson()                Returns the current record's "Eperson" value
+ * @method Doctrine_Collection getBiItems()                Returns the current record's "BiItems" collection
+ * @method Doctrine_Collection getHarvestedItems()         Returns the current record's "HarvestedItems" collection
+ * @method Doctrine_Collection getBiWithdrawns()           Returns the current record's "BiWithdrawns" collection
+ * @method Doctrine_Collection getBi2Dmaps()               Returns the current record's "Bi2Dmaps" collection
+ * @method Doctrine_Collection getCollectionsTemplateFor() Returns the current record's "CollectionsTemplateFor" collection
+ * @method Doctrine_Collection getBundles()                Returns the current record's "Bundles" collection
+ * @method Doctrine_Collection getCollections()            Returns the current record's "Collections" collection
+ * @method Doctrine_Collection getMetadatavalues()         Returns the current record's "Metadatavalues" collection
+ * @method Doctrine_Collection getBi4Dmaps()               Returns the current record's "Bi4Dmaps" collection
+ * @method Doctrine_Collection getWorkflowitems()          Returns the current record's "Workflowitems" collection
+ * @method Doctrine_Collection getCommunities()            Returns the current record's "Communities" collection
+ * @method Doctrine_Collection getWorkspaceitems()         Returns the current record's "Workspaceitems" collection
+ * @method Doctrine_Collection getCollection2item()        Returns the current record's "Collection2item" collection
+ * @method Doctrine_Collection getCommunities2item()       Returns the current record's "Communities2item" collection
+ * @method Doctrine_Collection getItem2bundle()            Returns the current record's "Item2bundle" collection
+ * @method Item                setItemId()                 Sets the current record's "item_id" value
+ * @method Item                setSubmitterId()            Sets the current record's "submitter_id" value
+ * @method Item                setInArchive()              Sets the current record's "in_archive" value
+ * @method Item                setWithdrawn()              Sets the current record's "withdrawn" value
+ * @method Item                setOwningCollection()       Sets the current record's "owning_collection" value
+ * @method Item                setLastModified()           Sets the current record's "last_modified" value
+ * @method Item                setEperson()                Sets the current record's "Eperson" value
+ * @method Item                setBiItems()                Sets the current record's "BiItems" collection
+ * @method Item                setHarvestedItems()         Sets the current record's "HarvestedItems" collection
+ * @method Item                setBiWithdrawns()           Sets the current record's "BiWithdrawns" collection
+ * @method Item                setBi2Dmaps()               Sets the current record's "Bi2Dmaps" collection
+ * @method Item                setCollectionsTemplateFor() Sets the current record's "CollectionsTemplateFor" collection
+ * @method Item                setBundles()                Sets the current record's "Bundles" collection
+ * @method Item                setCollections()            Sets the current record's "Collections" collection
+ * @method Item                setMetadatavalues()         Sets the current record's "Metadatavalues" collection
+ * @method Item                setBi4Dmaps()               Sets the current record's "Bi4Dmaps" collection
+ * @method Item                setWorkflowitems()          Sets the current record's "Workflowitems" collection
+ * @method Item                setCommunities()            Sets the current record's "Communities" collection
+ * @method Item                setWorkspaceitems()         Sets the current record's "Workspaceitems" collection
+ * @method Item                setCollection2item()        Sets the current record's "Collection2item" collection
+ * @method Item                setCommunities2item()       Sets the current record's "Communities2item" collection
+ * @method Item                setItem2bundle()            Sets the current record's "Item2bundle" collection
  * 
  * @package    dspace
  * @subpackage model
@@ -151,17 +157,19 @@ abstract class BaseItem extends BaseDoctrineRecord
              'local' => 'item_id',
              'foreign' => 'item_id'));
 
-        $this->hasMany('Collection as Collections', array(
+        $this->hasMany('Collection as CollectionsTemplateFor', array(
              'local' => 'item_id',
              'foreign' => 'template_item_id'));
 
-        $this->hasMany('Item2bundle as Item2bundles', array(
+        $this->hasMany('Bundle as Bundles', array(
+             'refClass' => 'Item2bundle',
              'local' => 'item_id',
-             'foreign' => 'item_id'));
+             'foreign' => 'bundle_id'));
 
-        $this->hasMany('Collection2item as Collection2items', array(
+        $this->hasMany('Collection as Collections', array(
+             'refClass' => 'Collection2item',
              'local' => 'item_id',
-             'foreign' => 'item_id'));
+             'foreign' => 'collection_id'));
 
         $this->hasMany('Metadatavalue as Metadatavalues', array(
              'local' => 'item_id',
@@ -175,17 +183,25 @@ abstract class BaseItem extends BaseDoctrineRecord
              'local' => 'item_id',
              'foreign' => 'item_id'));
 
-        $this->hasMany('Communities2item as Communities2items', array(
+        $this->hasMany('Community as Communities', array(
+             'refClass' => 'Communities2item',
              'local' => 'item_id',
-             'foreign' => 'item_id'));
+             'foreign' => 'community_id'));
 
         $this->hasMany('Workspaceitem as Workspaceitems', array(
              'local' => 'item_id',
              'foreign' => 'item_id'));
 
-        $this->hasMany('Bundle', array(
-             'refClass' => 'Item2bundle',
+        $this->hasMany('Collection2item', array(
              'local' => 'item_id',
-             'foreign' => 'bundle_id'));
+             'foreign' => 'item_id'));
+
+        $this->hasMany('Communities2item', array(
+             'local' => 'item_id',
+             'foreign' => 'item_id'));
+
+        $this->hasMany('Item2bundle', array(
+             'local' => 'item_id',
+             'foreign' => 'item_id'));
     }
 }

@@ -17,13 +17,13 @@ abstract class BaseCommunity2collectionForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'            => new sfWidgetFormInputHidden(),
       'community_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Community'), 'add_empty' => true)),
-      'collection_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Collection_ForCollection'), 'add_empty' => true)),
+      'collection_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Collection'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
       'id'            => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'id', 'required' => false)),
       'community_id'  => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Community'), 'required' => false)),
-      'collection_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Collection_ForCollection'), 'required' => false)),
+      'collection_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Collection'), 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('community2collection[%s]');

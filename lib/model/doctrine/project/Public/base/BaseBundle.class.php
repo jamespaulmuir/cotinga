@@ -10,28 +10,28 @@ Doctrine_Manager::getInstance()->bindComponent('Bundle', 'doctrine');
  * @property integer $bundle_id
  * @property string $name
  * @property integer $primary_bitstream_id
- * @property Bitstream $Bitstream
- * @property Doctrine_Collection $Bundle2bitstreams
- * @property Doctrine_Collection $Item2bundles
+ * @property Bitstream $PrimaryBitstream
  * @property Doctrine_Collection $Items
  * @property Doctrine_Collection $Bitstreams
+ * @property Doctrine_Collection $Bundle2bitstream
+ * @property Doctrine_Collection $Item2bundle
  * 
  * @method integer             getBundleId()             Returns the current record's "bundle_id" value
  * @method string              getName()                 Returns the current record's "name" value
  * @method integer             getPrimaryBitstreamId()   Returns the current record's "primary_bitstream_id" value
- * @method Bitstream           getBitstream()            Returns the current record's "Bitstream" value
- * @method Doctrine_Collection getBundle2bitstreams()    Returns the current record's "Bundle2bitstreams" collection
- * @method Doctrine_Collection getItem2bundles()         Returns the current record's "Item2bundles" collection
+ * @method Bitstream           getPrimaryBitstream()     Returns the current record's "PrimaryBitstream" value
  * @method Doctrine_Collection getItems()                Returns the current record's "Items" collection
  * @method Doctrine_Collection getBitstreams()           Returns the current record's "Bitstreams" collection
+ * @method Doctrine_Collection getBundle2bitstream()     Returns the current record's "Bundle2bitstream" collection
+ * @method Doctrine_Collection getItem2bundle()          Returns the current record's "Item2bundle" collection
  * @method Bundle              setBundleId()             Sets the current record's "bundle_id" value
  * @method Bundle              setName()                 Sets the current record's "name" value
  * @method Bundle              setPrimaryBitstreamId()   Sets the current record's "primary_bitstream_id" value
- * @method Bundle              setBitstream()            Sets the current record's "Bitstream" value
- * @method Bundle              setBundle2bitstreams()    Sets the current record's "Bundle2bitstreams" collection
- * @method Bundle              setItem2bundles()         Sets the current record's "Item2bundles" collection
+ * @method Bundle              setPrimaryBitstream()     Sets the current record's "PrimaryBitstream" value
  * @method Bundle              setItems()                Sets the current record's "Items" collection
  * @method Bundle              setBitstreams()           Sets the current record's "Bitstreams" collection
+ * @method Bundle              setBundle2bitstream()     Sets the current record's "Bundle2bitstream" collection
+ * @method Bundle              setItem2bundle()          Sets the current record's "Item2bundle" collection
  * 
  * @package    dspace
  * @subpackage model
@@ -71,17 +71,9 @@ abstract class BaseBundle extends BaseDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Bitstream', array(
+        $this->hasOne('Bitstream as PrimaryBitstream', array(
              'local' => 'primary_bitstream_id',
              'foreign' => 'bitstream_id'));
-
-        $this->hasMany('Bundle2bitstream as Bundle2bitstreams', array(
-             'local' => 'bundle_id',
-             'foreign' => 'bundle_id'));
-
-        $this->hasMany('Item2bundle as Item2bundles', array(
-             'local' => 'bundle_id',
-             'foreign' => 'bundle_id'));
 
         $this->hasMany('Item as Items', array(
              'refClass' => 'Item2bundle',
@@ -92,5 +84,13 @@ abstract class BaseBundle extends BaseDoctrineRecord
              'refClass' => 'Bundle2bitstream',
              'local' => 'bundle_id',
              'foreign' => 'bitstream_id'));
+
+        $this->hasMany('Bundle2bitstream', array(
+             'local' => 'bundle_id',
+             'foreign' => 'bundle_id'));
+
+        $this->hasMany('Item2bundle', array(
+             'local' => 'bundle_id',
+             'foreign' => 'bundle_id'));
     }
 }

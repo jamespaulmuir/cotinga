@@ -14,12 +14,12 @@ abstract class BaseCollection2itemFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'collection_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Collection'), 'add_empty' => true)),
-      'item_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Item_ForItem'), 'add_empty' => true)),
+      'item_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Item'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
       'collection_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Collection'), 'column' => 'collection_id')),
-      'item_id'       => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Item_ForItem'), 'column' => 'item_id')),
+      'item_id'       => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Item'), 'column' => 'item_id')),
     ));
 
     $this->widgetSchema->setNameFormat('collection2item_filters[%s]');

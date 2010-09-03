@@ -14,12 +14,12 @@ abstract class BaseCommunity2collectionFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'community_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Community'), 'add_empty' => true)),
-      'collection_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Collection_ForCollection'), 'add_empty' => true)),
+      'collection_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Collection'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
       'community_id'  => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Community'), 'column' => 'community_id')),
-      'collection_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Collection_ForCollection'), 'column' => 'collection_id')),
+      'collection_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Collection'), 'column' => 'collection_id')),
     ));
 
     $this->widgetSchema->setNameFormat('community2collection_filters[%s]');

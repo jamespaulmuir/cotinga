@@ -10,19 +10,19 @@ Doctrine_Manager::getInstance()->bindComponent('Community2community', 'doctrine'
  * @property integer $id
  * @property integer $parent_comm_id
  * @property integer $child_comm_id
- * @property Community $Community_ForParentComm
- * @property Community $Community_ForChildComm
+ * @property Community $ParentCommunity
+ * @property Community $ChildCommunity
  * 
- * @method integer             getId()                      Returns the current record's "id" value
- * @method integer             getParentCommId()            Returns the current record's "parent_comm_id" value
- * @method integer             getChildCommId()             Returns the current record's "child_comm_id" value
- * @method Community           getCommunityForParentComm()  Returns the current record's "Community_ForParentComm" value
- * @method Community           getCommunityForChildComm()   Returns the current record's "Community_ForChildComm" value
- * @method Community2community setId()                      Sets the current record's "id" value
- * @method Community2community setParentCommId()            Sets the current record's "parent_comm_id" value
- * @method Community2community setChildCommId()             Sets the current record's "child_comm_id" value
- * @method Community2community setCommunityForParentComm()  Sets the current record's "Community_ForParentComm" value
- * @method Community2community setCommunityForChildComm()   Sets the current record's "Community_ForChildComm" value
+ * @method integer             getId()              Returns the current record's "id" value
+ * @method integer             getParentCommId()    Returns the current record's "parent_comm_id" value
+ * @method integer             getChildCommId()     Returns the current record's "child_comm_id" value
+ * @method Community           getParentCommunity() Returns the current record's "ParentCommunity" value
+ * @method Community           getChildCommunity()  Returns the current record's "ChildCommunity" value
+ * @method Community2community setId()              Sets the current record's "id" value
+ * @method Community2community setParentCommId()    Sets the current record's "parent_comm_id" value
+ * @method Community2community setChildCommId()     Sets the current record's "child_comm_id" value
+ * @method Community2community setParentCommunity() Sets the current record's "ParentCommunity" value
+ * @method Community2community setChildCommunity()  Sets the current record's "ChildCommunity" value
  * 
  * @package    dspace
  * @subpackage model
@@ -62,11 +62,11 @@ abstract class BaseCommunity2community extends BaseDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Community as Community_ForParentComm', array(
+        $this->hasOne('Community as ParentCommunity', array(
              'local' => 'parent_comm_id',
              'foreign' => 'community_id'));
 
-        $this->hasOne('Community as Community_ForChildComm', array(
+        $this->hasOne('Community as ChildCommunity', array(
              'local' => 'child_comm_id',
              'foreign' => 'community_id'));
     }

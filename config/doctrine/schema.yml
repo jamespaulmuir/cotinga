@@ -313,11 +313,12 @@ Bitstream:
       primary: false
   package: Public.Entities
   relations:
-    Bitstreamformatregistry:
+    Format:
+      class: BitstreamFormatRegistry
       local: bitstream_format_id
       foreign: bitstream_format_id
       type: one
-    Bundles:
+    BundlePrimary:
       class: Bundle
       local: bitstream_id
       foreign: primary_bitstream_id
@@ -327,24 +328,24 @@ Bitstream:
       local: bitstream_id
       foreign: bitstream_id
       type: many
-    Bundle2bitstreams:
-      class: Bundle2bitstream
+    Bundles:
+      class: Bundle
+      refClass: Bundle2bitstream
       local: bitstream_id
-      foreign: bitstream_id
-      type: many
-    Collections:
+      foreign: bundle_id
+    CollectionsLogo:
       class: Collection
       local: bitstream_id
       foreign: logo_bitstream_id
       type: many
-    Communitys:
+    CommunitiesLogo:
       class: Community
       local: bitstream_id
       foreign: logo_bitstream_id
       type: many
 
 
-Bitstreamformatregistry:
+BitstreamFormatRegistry:
   connection: doctrine
   tableName: public.bitstreamformatregistry
   columns:
@@ -385,8 +386,8 @@ Bitstreamformatregistry:
       primary: false
   package: Public.Entities
   relations:
-    Fileextensions:
-      class: Fileextension
+    FileExtensions:
+      class: FileExtension
       local: bitstream_format_id
       foreign: bitstream_format_id
       type: many
@@ -453,20 +454,11 @@ Bundle:
       primary: false
   package: Public.Entities
   relations:
-    Bitstream:
+    PrimaryBitstream:
+      class: Bitstream
       local: primary_bitstream_id
       foreign: bitstream_id
       type: one
-    Bundle2bitstreams:
-      class: Bundle2bitstream
-      local: bundle_id
-      foreign: bundle_id
-      type: many
-    Item2bundles:
-      class: Item2bundle
-      local: bundle_id
-      foreign: bundle_id
-      type: many
     Items:
       class: Item
       local: bundle_id
@@ -589,8 +581,7 @@ Collection2item:
       local: collection_id
       foreign: collection_id
       type: one
-    Item_ForItem:
-      class: Item
+    Item:
       local: item_id
       foreign: item_id
       type: one
@@ -714,11 +705,13 @@ Collection:
       primary: false
   package: Public.Entities
   relations:
-    Bitstream:
+    LogoBitstream:
+      class: Bitstream
       local: logo_bitstream_id
       foreign: bitstream_id
       type: one
-    Item:
+    TemplateItem:
+      class: Item
       local: template_item_id
       foreign: item_id
       type: one
@@ -752,16 +745,11 @@ Collection:
       local: collection_id
       foreign: collection_id
       type: many
-    Community2collections:
-      class: Community2collection
+    Communities:
+      class: Community
+      refClass: Community2collection
       local: collection_id
-      foreign: collection_id
-      type: many
-    Collection2items:
-      class: Collection2item
-      local: collection_id
-      foreign: collection_id
-      type: many
+      foreign: community_id   
     CollectionItemCounts:
       class: CollectionItemCount
       local: collection_id
@@ -845,11 +833,11 @@ Community2collection:
       primary: false
   package: Public.Entities
   relations:
-    Community as Community:
+    Community:
       local: community_id
       foreign: community_id
       type: one
-    Collection_ForCollection as Collection:
+    Collection:
       class: Collection
       local: collection_id
       foreign: collection_id
@@ -879,12 +867,12 @@ Community2community:
       primary: false
   package: Public.Entities
   relations:
-    Community_ForParentComm:
+    ParentCommunity:
       class: Community
       local: parent_comm_id
       foreign: community_id
       type: one
-    Community_ForChildComm:
+    ChildCommunity:
       class: Community
       local: child_comm_id
       foreign: community_id
@@ -967,7 +955,8 @@ Community:
       primary: false
   package: Public.Entities
   relations:
-    Bitstream:
+    LogoBitstream:
+      class: Bitstream
       local: logo_bitstream_id
       foreign: bitstream_id
       type: one
@@ -975,31 +964,31 @@ Community:
       local: admin
       foreign: eperson_group_id
       type: one
-    Community2collections:
-      class: Community2collection
+    Collections:
+      class: Collection
+      refClass: Community2collection
       local: community_id
-      foreign: community_id
-      type: many
-    Community2communitys_ForParentComm:
-      class: Community2community
-      local: community_id
+      foreign: collection_id
+    ParentCommunities:
+      class: Community
+      refClass: Community2community
+      local: child_comm_id
       foreign: parent_comm_id
-      type: many
-    Community2communitys_ForChildComm:
-      class: Community2community
-      local: community_id
+    ChildCommunities:
+      class: Community
+      refClass: Community2community
+      local: parent_comm_id
       foreign: child_comm_id
-      type: many
     CommunityItemCounts:
       class: CommunityItemCount
       local: community_id
       foreign: community_id
       type: many
-    Communities2items:
-      class: Communities2item
+    Items:
+      class: Item
+      refClass: Communities2item
       local: community_id
-      foreign: community_id
-      type: many
+      foreign: item_id
 
 
 Eperson:
@@ -1253,7 +1242,7 @@ Epersongroup:
       type: many
 
 
-Fileextension:
+FileExtension:
   connection: doctrine
   tableName: public.fileextension
   columns:
@@ -1276,7 +1265,8 @@ Fileextension:
       primary: false
   package: Public.Entities
   relations:
-    Bitstreamformatregistry:
+    Format:
+      class: BitstreamFormatRegistry
       local: bitstream_format_id
       foreign: bitstream_format_id
       type: one
@@ -1586,21 +1576,21 @@ Item:
       local: item_id
       foreign: item_id
       type: many
-    Collections:
+    CollectionsTemplateFor:
       class: Collection
       local: item_id
       foreign: template_item_id
       type: many
-    Item2bundles:
-      class: Item2bundle
+    Bundles:
+      refClass: Item2bundle
+      class: Bundle
       local: item_id
-      foreign: item_id
-      type: many
-    Collection2items:
-      class: Collection2item
+      foreign: bundle_id
+    Collections:
+      class: Collection
+      refClass: Collection2item
       local: item_id
-      foreign: item_id
-      type: many
+      foreign: collection_id
     Metadatavalues:
       class: Metadatavalue
       local: item_id
@@ -1616,11 +1606,11 @@ Item:
       local: item_id
       foreign: item_id
       type: many
-    Communities2items:
-      class: Communities2item
+    Communities:
+      class: Community
+      refClass: Communities2item
       local: item_id
-      foreign: item_id
-      type: many
+      foreign: community_id
     Workspaceitems:
       class: Workspaceitem
       local: item_id
@@ -1663,7 +1653,8 @@ Metadatafieldregistry:
       primary: false
   package: Public.Entities
   relations:
-    Metadataschemaregistry:
+    MetadataSchema:
+      class: Metadataschemaregistry
       local: metadata_schema_id
       foreign: metadata_schema_id
       type: one

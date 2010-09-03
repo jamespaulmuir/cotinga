@@ -24,5 +24,3 @@
     <?php endforeach; ?>
   </tbody>
 </table>
-
-  <a href="<?php echo url_for('items/new') ?>">New</a>

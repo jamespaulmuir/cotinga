@@ -13,14 +13,14 @@ abstract class BaseMetadatafieldregistryFormFilter extends BaseFormFilterDoctrin
   public function setup()
   {
     $this->setWidgets(array(
-      'metadata_schema_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Metadataschemaregistry'), 'add_empty' => true)),
+      'metadata_schema_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('MetadataSchema'), 'add_empty' => true)),
       'element'            => new sfWidgetFormFilterInput(),
       'qualifier'          => new sfWidgetFormFilterInput(),
       'scope_note'         => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
-      'metadata_schema_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Metadataschemaregistry'), 'column' => 'metadata_schema_id')),
+      'metadata_schema_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('MetadataSchema'), 'column' => 'metadata_schema_id')),
       'element'            => new sfValidatorPass(array('required' => false)),
       'qualifier'          => new sfValidatorPass(array('required' => false)),
       'scope_note'         => new sfValidatorPass(array('required' => false)),

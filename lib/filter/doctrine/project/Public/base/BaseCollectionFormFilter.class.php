@@ -16,8 +16,8 @@ abstract class BaseCollectionFormFilter extends BaseFormFilterDoctrine
       'name'                   => new sfWidgetFormFilterInput(),
       'short_description'      => new sfWidgetFormFilterInput(),
       'introductory_text'      => new sfWidgetFormFilterInput(),
-      'logo_bitstream_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Bitstream'), 'add_empty' => true)),
-      'template_item_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Item'), 'add_empty' => true)),
+      'logo_bitstream_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('LogoBitstream'), 'add_empty' => true)),
+      'template_item_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('TemplateItem'), 'add_empty' => true)),
       'provenance_description' => new sfWidgetFormFilterInput(),
       'license'                => new sfWidgetFormFilterInput(),
       'copyright_text'         => new sfWidgetFormFilterInput(),
@@ -27,14 +27,16 @@ abstract class BaseCollectionFormFilter extends BaseFormFilterDoctrine
       'workflow_step_3'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Epersongroup_ForWorkflowStep3'), 'add_empty' => true)),
       'submitter'              => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Epersongroup_ForSubmitter'), 'add_empty' => true)),
       'admin'                  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Epersongroup_ForAdmin'), 'add_empty' => true)),
+      'communities_list'       => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Community')),
+      'items_list'             => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Item')),
     ));
 
     $this->setValidators(array(
       'name'                   => new sfValidatorPass(array('required' => false)),
       'short_description'      => new sfValidatorPass(array('required' => false)),
       'introductory_text'      => new sfValidatorPass(array('required' => false)),
-      'logo_bitstream_id'      => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Bitstream'), 'column' => 'bitstream_id')),
-      'template_item_id'       => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Item'), 'column' => 'item_id')),
+      'logo_bitstream_id'      => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('LogoBitstream'), 'column' => 'bitstream_id')),
+      'template_item_id'       => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('TemplateItem'), 'column' => 'item_id')),
       'provenance_description' => new sfValidatorPass(array('required' => false)),
       'license'                => new sfValidatorPass(array('required' => false)),
       'copyright_text'         => new sfValidatorPass(array('required' => false)),
@@ -44,6 +46,8 @@ abstract class BaseCollectionFormFilter extends BaseFormFilterDoctrine
       'workflow_step_3'        => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Epersongroup_ForWorkflowStep3'), 'column' => 'eperson_group_id')),
       'submitter'              => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Epersongroup_ForSubmitter'), 'column' => 'eperson_group_id')),
       'admin'                  => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Epersongroup_ForAdmin'), 'column' => 'eperson_group_id')),
+      'communities_list'       => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Community', 'required' => false)),
+      'items_list'             => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Item', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('collection_filters[%s]');
@@ -53,6 +57,42 @@ abstract class BaseCollectionFormFilter extends BaseFormFilterDoctrine
     $this->setupInheritance();
 
     parent::setup();
+  }
+
+  public function addCommunitiesListColumnQuery(Doctrine_Query $query, $field, $values)
+  {
+    if (!is_array($values))
+    {
+      $values = array($values);
+    }
+
+    if (!count($values))
+    {
+      return;
+    }
+
+    $query
+      ->leftJoin($query->getRootAlias().'.Community2collection Community2collection')
+      ->andWhereIn('Community2collection.community_id', $values)
+    ;
+  }
+
+  public function addItemsListColumnQuery(Doctrine_Query $query, $field, $values)
+  {
+    if (!is_array($values))
+    {
+      $values = array($values);
+    }
+
+    if (!count($values))
+    {
+      return;
+    }
+
+    $query
+      ->leftJoin($query->getRootAlias().'.Collection2item Collection2item')
+      ->andWhereIn('Collection2item.item_id', $values)
+    ;
   }
 
   public function getModelName()
@@ -78,6 +118,8 @@ abstract class BaseCollectionFormFilter extends BaseFormFilterDoctrine
       'workflow_step_3'        => 'ForeignKey',
       'submitter'              => 'ForeignKey',
       'admin'                  => 'ForeignKey',
+      'communities_list'       => 'ManyKey',
+      'items_list'             => 'ManyKey',
     );
   }
 }

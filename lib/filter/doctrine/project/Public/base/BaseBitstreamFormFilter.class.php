@@ -13,7 +13,7 @@ abstract class BaseBitstreamFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'bitstream_format_id'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Bitstreamformatregistry'), 'add_empty' => true)),
+      'bitstream_format_id'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Format'), 'add_empty' => true)),
       'name'                    => new sfWidgetFormFilterInput(),
       'checksum'                => new sfWidgetFormFilterInput(),
       'checksum_algorithm'      => new sfWidgetFormFilterInput(),
@@ -25,10 +25,11 @@ abstract class BaseBitstreamFormFilter extends BaseFormFilterDoctrine
       'store_number'            => new sfWidgetFormFilterInput(),
       'sequence_id'             => new sfWidgetFormFilterInput(),
       'size_bytes'              => new sfWidgetFormFilterInput(),
+      'bundles_list'            => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Bundle')),
     ));
 
     $this->setValidators(array(
-      'bitstream_format_id'     => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Bitstreamformatregistry'), 'column' => 'bitstream_format_id')),
+      'bitstream_format_id'     => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Format'), 'column' => 'bitstream_format_id')),
       'name'                    => new sfValidatorPass(array('required' => false)),
       'checksum'                => new sfValidatorPass(array('required' => false)),
       'checksum_algorithm'      => new sfValidatorPass(array('required' => false)),
@@ -40,6 +41,7 @@ abstract class BaseBitstreamFormFilter extends BaseFormFilterDoctrine
       'store_number'            => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'sequence_id'             => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'size_bytes'              => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'bundles_list'            => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Bundle', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('bitstream_filters[%s]');
@@ -49,6 +51,24 @@ abstract class BaseBitstreamFormFilter extends BaseFormFilterDoctrine
     $this->setupInheritance();
 
     parent::setup();
+  }
+
+  public function addBundlesListColumnQuery(Doctrine_Query $query, $field, $values)
+  {
+    if (!is_array($values))
+    {
+      $values = array($values);
+    }
+
+    if (!count($values))
+    {
+      return;
+    }
+
+    $query
+      ->leftJoin($query->getRootAlias().'.Bundle2bitstream Bundle2bitstream')
+      ->andWhereIn('Bundle2bitstream.bundle_id', $values)
+    ;
   }
 
   public function getModelName()
@@ -72,6 +92,7 @@ abstract class BaseBitstreamFormFilter extends BaseFormFilterDoctrine
       'store_number'            => 'Number',
       'sequence_id'             => 'Number',
       'size_bytes'              => 'Number',
+      'bundles_list'            => 'ManyKey',
     );
   }
 }

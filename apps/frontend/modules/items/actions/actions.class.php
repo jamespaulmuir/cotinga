@@ -39,7 +39,7 @@ class itemsActions extends sfActions
         $this->bundles = Doctrine::getTable('Bundle')
                 ->createQuery('b')
                 ->leftJoin('b.Bitstreams bi')
-                ->leftJoin('bi.Bitstreamformatregistry bf')
+                ->leftJoin('bi.Format bf')
                 ->leftJoin('b.Items i')
                 ->where('i.item_id = ? AND bf.internal = false', $id)
                 ->execute();
