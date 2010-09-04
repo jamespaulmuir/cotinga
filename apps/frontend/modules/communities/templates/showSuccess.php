@@ -1,7 +1,7 @@
 <h2><?php echo $community->getName() ?></h2>
 
 <?php if($community->LogoBitstream != null): ?>
-<img style="float:right; "src="https://kb.osu.edu/dspace/retrieve/<?php echo $community->LogoBitstream->bitstream_id; ?>"/>
+<img class="logo" src="https://kb.osu.edu/dspace/retrieve/<?php echo $community->LogoBitstream->bitstream_id; ?>"/>
 <?php endif; ?>
 <?php echo html_entity_decode($community->getIntroductoryText()) ?>
 

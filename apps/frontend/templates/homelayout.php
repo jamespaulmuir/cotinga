@@ -13,13 +13,17 @@
 	<div id="nav">
 
 		<ul>
-			<li><a href="<?php echo url_for('@homepage'); ?>">Home</a></li>
+			<li id="current"><a href="<?php echo url_for('@homepage'); ?>">Home</a></li>
+			
 		</ul>
 
 	</div>
 
 	<!-- header starts here -->
-	<div id="header" class="short">
+	<div id="header">
+
+		<div id="clouds"></div>
+
                 <h1 id="logo-text"><a href="<?php echo url_for('@homepage'); ?>" title="<?php echo sfConfig::get('app_site_name'); ?>"><?php echo sfConfig::get('app_site_name'); ?></a></h1>
 		<p id="slogan"><?php echo sfConfig::get('app_site_slogan');?></p>
 
@@ -46,8 +50,8 @@
                                 <li><a href="#">Subject</a></li>
 			</ul>
 
-                        
-
+                        <h3>Recent Items</h3>
+                        <?php include_component('items', 'recentSubmissions'); ?>
 		</div>
 
 		<div id="main">

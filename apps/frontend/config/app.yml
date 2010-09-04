@@ -2,4 +2,38 @@
 # http://www.symfony-project.org/reference/1_4/en/11-App
 
 # default values
-#all:
+all:
+  site_name: "cotinga"
+  site_slogan: "a new approach for presenting your DSpace repository"
+
+  nb_recent_submissions: 10
+  date_format:
+
+  metadata:
+    show:
+      dc.title        :
+        label: "Title"
+        filter: ~
+      dc.contributor:
+        label: "Contributors"
+        filter: ~
+      dc.date.issued	:
+        label: "Issue Date"
+        filter: ~
+      dc.publisher:
+        label: "Publisher"
+        filter: ~
+      dc.relation.ispartofseries:
+        label: "Series/Report no."
+        filter: ~
+        
+        #datefitler?
+      dc.identifier.uri:
+        label: "URI"
+        filter: MetadataFormatFilter.linkFormat
+      
+        #link filter
+      #dc.description.provenance: ~
+
+    full_hide:
+      dc.description.provenance: ~

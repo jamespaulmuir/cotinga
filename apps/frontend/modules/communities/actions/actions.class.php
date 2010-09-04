@@ -12,6 +12,7 @@ class communitiesActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
+    $this->setLayout('homelayout');
     $this->communitys = Doctrine::getTable('Community')
       ->createQuery('a')
       ->orderBy('upper(a.name)')

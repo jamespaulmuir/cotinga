@@ -19,3 +19,27 @@ span.creator {
     display: block;
     margin-left: 20px;
 }
+
+img {
+    border: none;
+}
+
+img.logo {
+    float: right;
+    padding: 0 0 5px 5px;
+}
+
+#header.short {
+    height: 100px;
+    background: none;
+}
+
+#header.short h1#logo-text a {
+	/* change the values of top and left to adjust the position of the logo*/
+	top: 0px; left: 10px;
+}
+#header.short p#slogan {
+
+	/* change the values of left and top to adjust the position of the slogan */
+	top: 65px; left: 25px;
+}

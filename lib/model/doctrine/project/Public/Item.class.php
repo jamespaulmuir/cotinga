@@ -25,7 +25,7 @@ class Item extends BaseItem
                 $name .= '.'.$mv->Metadatafieldregistry->qualifier;
             }
 
-            $this->metadata[$name] = $mv->text_value;
+            $this->metadata[$name][] = $mv->text_value;
             
         }
         $this->createdMap = true;
@@ -39,11 +39,32 @@ class Item extends BaseItem
         return $this->metadata;
     }
 
-    public function  __get($name) {
+    public function  __get($name)
+    {
         if($name == 'metadata'){
             return $this->getMetadata();
         }
         return parent::__get($name);
+    }
+
+    public function buildSolrDocument()
+    {
+        $parents = array();
+        $parent = $this;
+
+
+        foreach($this->getCommunities() as $community){
+            $parents[] = $community->name;
+        }
+
+        array_reverse($parents);
+        foreach($this->getCollections() as $collection){
+            $parents[] = $collection->name;
+        }
+
+        $path = join('/', $parents);
+        return $path;
+
     }
 
     

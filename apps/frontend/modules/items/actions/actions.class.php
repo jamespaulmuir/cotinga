@@ -21,20 +21,9 @@ class itemsActions extends sfActions
 
     public function executeShow(sfWebRequest $request)
     {
+        $this->show_full_record = $request->getParameter('full');
         $id = $request->getParameter('item_id');
         $this->item = Doctrine::getTable('Item')->getWithMetadata($id);
-
-
-        /*
-        $this->bitstreams = Doctrine::getTable('Bitstream')
-                        ->createQuery('bits')
-                        ->leftJoin('bits.Bundle2bitstreams b2b')
-                        ->leftJoin('b2b.Bundle bi')
-                        ->leftJoin('bi.Item2bundles i2b')
-                        ->leftJoin('i2b.Item i')
-                        ->where('i.item_id = ?', $id)
-                        ->execute();
-        */
 
         $this->bundles = Doctrine::getTable('Bundle')
                 ->createQuery('b')
@@ -43,8 +32,18 @@ class itemsActions extends sfActions
                 ->leftJoin('b.Items i')
                 ->where('i.item_id = ? AND bf.internal = false', $id)
                 ->execute();
-        
+
         $this->forward404Unless($this->item);
+    }
+
+
+    public function executeSolr()
+    {
+        $id = $request->getParameter('item_id');
+        $this->item = Doctrine::getTable('Item')->find($id);
+
+        $this->forward404Unless($this->item);
+
     }
 
 }
