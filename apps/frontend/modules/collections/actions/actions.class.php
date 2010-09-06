@@ -43,6 +43,9 @@ class collectionsActions extends sfActions
     $this->pager->setPage($this->getRequestParameter('page',1));
     $this->pager->init();
 
+    $response = $this->getResponse();
+    $response->setTitle($this->collection->getName());
+
     $this->forward404Unless($this->collection);
   }
 

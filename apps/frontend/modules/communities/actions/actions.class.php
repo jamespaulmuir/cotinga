@@ -39,6 +39,9 @@ class communitiesActions extends sfActions
             ->execute();
 
     $this->subcommunities = $this->community->getChildCommunities();
+
+    $response = $this->getResponse();
+    $response->setTitle($this->community->getName());
     
     $this->forward404Unless($this->community);
   }

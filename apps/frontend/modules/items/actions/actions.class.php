@@ -32,6 +32,9 @@ class itemsActions extends sfActions
                 ->leftJoin('b.Items i')
                 ->where('i.item_id = ? AND bf.internal = false', $id)
                 ->execute();
+        
+        $response = $this->getResponse();
+        $response->setTitle($this->item->metadata['dc.title'][0]);
 
         $this->forward404Unless($this->item);
     }
