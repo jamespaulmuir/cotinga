@@ -47,7 +47,7 @@
 			</ul>
 
                         
-
+                        <?php include_slot('SideBar'); ?>
 		</div>
 
 		<div id="main">

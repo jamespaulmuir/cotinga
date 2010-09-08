@@ -6,7 +6,7 @@ class MetadataFormatFilter
 
     public static function dateFormat($date)
     {
-        return date("n/j", strtotime($date));
+        return date("n/j/Y", strtotime($date));
     }
 
     public static function linkFormat($link)

@@ -1,5 +1,6 @@
 config/databases.yml
 cache/*
+data/*.index/*
 log/*
 web/*Plugin
 web/sf

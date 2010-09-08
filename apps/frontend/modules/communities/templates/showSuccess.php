@@ -9,6 +9,7 @@
 
 
 
+
 <?php if(count($subcommunities) > 0): ?>
 <h3>Sub-communities within this community</h3>
 <ul>
@@ -32,3 +33,7 @@
 <?php endforeach; ?>
 </ul>
 <?php endif; ?>
+
+<?php slot('SideBar'); ?>
+<?php include_component('communities','RecentSubmissionsForCommunity', array('community_id'=>$community->community_id)); ?>
+<?php end_slot(); ?>
