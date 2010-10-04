@@ -6,6 +6,9 @@ all:
   site_name: "cotinga"
   site_slogan: "a new approach for presenting your DSpace repository"
 
+  dspace_url: "https://kb.osu.edu/dspace"
+  dspace_handle_prefix: 1811
+
   nb_recent_submissions: 10
   date_format:
 
