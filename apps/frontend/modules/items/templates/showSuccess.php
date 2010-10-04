@@ -1,4 +1,4 @@
-
+<?php use_helper('Filesize'); ?>
 <h3><?php echo $title = $item->metadata['dc.title'][0]; ?></h3>
 <table>
 <?php if($show_full_record): ?>
@@ -37,11 +37,12 @@
                                     <li>   
 
         <?php $handle_id = substr($item->metadata['dc.identifier.uri'][0], strrpos($item->metadata['dc.identifier.uri'][0], '/') + 1); ?>
-                                    <a href="https://kb.osu.edu/dspace/bitstream/1811/<?php echo $handle_id; ?>/<?php echo $bitstream->sequence_id; ?>/<?php echo $bitstream->getName(); ?>">
-            <?php echo $bitstream->getName(); ?>
+                                    <a href="https://kb.osu.edu/dspace/retrieve/<?php echo $bitstream->bitstream_id; ?>">
+            <?php echo $bitstream->getName(); ?> (<?php echo format_bytes($bitstream->size_bytes); ?>)
                                 </a> -
         <?php echo $bitstream->user_format_description != '' ? $bitstream->user_format_description : $bitstream->Format->short_description; ?>
 
+         
 
 
         <?php // print_R($bitstream->toArray(false)); ?>
