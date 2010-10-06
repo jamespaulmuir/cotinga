@@ -1,5 +1,5 @@
 <h2><?php echo $community->getName() ?></h2>
-
+<?php // include_partial('global/breadcrumbs', array('parts'=>$community->getPath())); ?>
 <?php if($community->LogoBitstream != null): ?>
 <img class="logo" src="https://kb.osu.edu/dspace/retrieve/<?php echo $community->LogoBitstream->bitstream_id; ?>"/>
 <?php endif; ?>
@@ -15,7 +15,7 @@
 <ul>
 <?php foreach($subcommunities as $subcommunity): ?>
     <li>
-    <a href="<?php echo url_for('communities/show?community_id='.$subcommunity->community_id); ?>">
+    <a href="<?php echo url_for('@community_seo?slug='.$subcommunity->getSlug().'&community_id='.$subcommunity->getCommunityId()) ?>">
     <?php echo $subcommunity->name; ?></a>
 
     </li>
@@ -27,7 +27,8 @@
 <h3>Collections in this community</h3>
 <ul>
 <?php foreach($collections as $collection): ?>
-    <li><a href="<?php echo url_for('collections/show?collection_id='.$collection->getCollectionId()) ?>">
+    <li>
+    <a href="<?php echo url_for('@collection_seo?slug='.$collection->getSlug().'&collection_id='.$collection->getCollectionId()) ?>">
         <?php echo $collection->getName() ?>
     </a></li>
 <?php endforeach; ?>

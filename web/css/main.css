@@ -11,6 +11,17 @@ ul.list-detail li{
     padding: 5px 0;
 }
 
+ul.icon-detail {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.icon-detail li {
+    display: inline-block;
+    padding: 10px;
+    width: 100px;
+}
 #sidebar ul.sidemenu li.no-icon {
     background-image: none;
 }
@@ -42,4 +53,44 @@ img.logo {
 
 	/* change the values of left and top to adjust the position of the slogan */
 	top: 65px; left: 25px;
+}
+
+body.preview {
+    background-position: 0 -56px;
+}
+
+body.preview #header,body.preview #nav,body.preview #content,body.preview #footer-wrap {
+	width: 100%;
+}
+
+body.preview #main {
+    min-height: 500px;
+    width: 65%;
+}
+body.preview #sidebar{
+    width: 35%;
+}
+body.preview #sidebar tr {
+    max-width: 140px;
+    width:100%;
+    overflow: hidden;
+
+}
+body.preview #main img.preview {
+    width: 100%;
+}
+
+body.preview h3 span.download {
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+body.preview embed.preview-pdf {
+    width: 98%;
+    min-height: 800px;
+}
+
+body.preview iframe.preview {
+    width: 98%;
+    min-height: 800px;
 }

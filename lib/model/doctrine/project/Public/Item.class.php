@@ -18,54 +18,69 @@ class Item extends BaseItem
 
     public function createMetadataMap()
     {
-        foreach($this->getMetadatavalues() as $mv){
+        foreach ($this->getMetadatavalues() as $mv) {
 
-            $name = 'dc.'.$mv->Metadatafieldregistry->element;
-            if($mv->Metadatafieldregistry->qualifier != null){
-                $name .= '.'.$mv->Metadatafieldregistry->qualifier;
+            $name = 'dc.' . $mv->Metadatafieldregistry->element;
+            if ($mv->Metadatafieldregistry->qualifier != null) {
+                $name .= '.' . $mv->Metadatafieldregistry->qualifier;
             }
 
             $this->metadata[$name][] = $mv->text_value;
-            
         }
         $this->createdMap = true;
     }
 
     public function getMetadata()
     {
-        if(!$this->createdMap){
+        if (!$this->createdMap) {
             $this->createMetadataMap();
         }
         return $this->metadata;
     }
 
-    public function  __get($name)
+    public function __get($name)
     {
-        if($name == 'metadata'){
+        if ($name == 'metadata') {
             return $this->getMetadata();
         }
         return parent::__get($name);
     }
 
-    public function buildSolrDocument()
+    public function getPath()
     {
         $parents = array();
         $parent = $this;
 
-
-        foreach($this->getCommunities() as $community){
-            $parents[] = $community->name;
+        foreach ($this->getCommunities() as $community) {
+            $parents[] = array(
+                'id'=>$community->community_id,
+                'type'=>'community',
+                'name'=>$community->name,
+                'slug'=>$community->getSlug()
+                );
         }
 
-        array_reverse($parents);
-        foreach($this->getCollections() as $collection){
-            $parents[] = $collection->name;
+        $parents = array_reverse($parents);
+        foreach ($this->getCollections() as $collection) {
+            $parents[] = array(
+                'id'=>$collection->collection_id,
+                'type'=>'collection',
+                'name'=>$collection->name,
+                'slug'=>$collection->getSlug()
+                );
         }
 
-        $path = join('/', $parents);
-        return $path;
-
+        return $parents;
     }
 
     
+
+    public function getSlug()
+    {
+        $metadata = $this->getMetadata();
+        return Cotinga::slugify($metadata['dc.title'][0]);
+    }
+
+   
+
 }

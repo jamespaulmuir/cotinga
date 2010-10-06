@@ -28,6 +28,23 @@ item:
     with_wildcard_routes: true
 
 
+item_seo:
+  url: /:slug/item/:item_id
+  param: { module: items, action: show, slug: ''}
+
+community_seo:
+  url: /:slug/community/:community_id
+  param: { module: communities, action: show}
+
+collection_seo:
+  url: /:slug/collection/:collection_id
+  param: { module: collections, action: show}
+
+
+bitstream_preview:
+  url: /retrieve/:bitstream_id
+  param: { module: bitstream, action: show }
+  
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 

@@ -1,4 +1,5 @@
 <?php use_helper('Filesize'); ?>
+<?php include_partial('global/breadcrumbs', array('parts'=>$item->getPath())); ?>
 <h3><?php echo $title = $item->metadata['dc.title'][0]; ?></h3>
 <table>
 <?php if($show_full_record): ?>
@@ -31,13 +32,13 @@
                     <ul>
     <?php foreach ($bundles as $bundle): ?>
 
-    <?php if ($bundle->getName() == 'ORIGINAL' || 1): ?>
+    <?php if ($bundle->getName() == 'ORIGINAL'  ): ?>
 
     <?php foreach ($bundle->Bitstreams as $bitstream): ?>
                                     <li>   
 
         <?php $handle_id = substr($item->metadata['dc.identifier.uri'][0], strrpos($item->metadata['dc.identifier.uri'][0], '/') + 1); ?>
-                                    <a href="https://kb.osu.edu/dspace/retrieve/<?php echo $bitstream->bitstream_id; ?>">
+                                    <a href="<?php echo url_for('@bitstream_preview?bitstream_id='.$bitstream->bitstream_id); ?>">
             <?php echo $bitstream->getName(); ?> (<?php echo format_bytes($bitstream->size_bytes); ?>)
                                 </a> -
         <?php echo $bitstream->user_format_description != '' ? $bitstream->user_format_description : $bitstream->Format->short_description; ?>

@@ -12,4 +12,22 @@
  */
 class Community extends BaseCommunity
 {
+
+    public function getPath()
+    {
+        $parents = array();
+        $parent = $this;
+        print_R($this->getParentCommunities()->toArray());
+        die();
+        while($parent = $parent->getParentCommunities()->getFirst()){
+            print_r($parent->toArray());
+        }
+        
+        return $parents;
+    }
+    
+    public function getSlug()
+    {
+        return Cotinga::slugify($this->name);
+    }
 }

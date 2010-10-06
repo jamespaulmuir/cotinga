@@ -12,4 +12,24 @@
  */
 class Collection extends BaseCollection
 {
+
+    public function getPath()
+    {
+        $parents = array();
+
+        $item = $this->getItems()->getFirst();
+        if (!$item)
+            return array();
+        $parents = $item->getPath();
+
+        array_pop($parents);
+
+        return $parents;
+    }
+
+    public function getSlug()
+    {
+        return Cotinga::slugify($this->name);
+    }
+
 }

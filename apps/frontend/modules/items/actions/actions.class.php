@@ -23,9 +23,15 @@ class itemsActions extends sfActions
 
     public function executeShow(sfWebRequest $request)
     {
+        
+
+
         $this->show_full_record = $request->getParameter('full');
         $id = $request->getParameter('item_id');
+
         $this->item = Doctrine::getTable('Item')->getWithMetadata($id);
+        
+        $this->forward404Unless($this->item && $this->item->getSlug() == $request->getParameter('slug'));
 
         $this->bundles = Doctrine::getTable('Bundle')
                 ->createQuery('b')
@@ -38,7 +44,7 @@ class itemsActions extends sfActions
         $response = $this->getResponse();
         $response->setTitle($this->item->metadata['dc.title'][0]);
 
-        $this->forward404Unless($this->item);
+        
     }
 
 

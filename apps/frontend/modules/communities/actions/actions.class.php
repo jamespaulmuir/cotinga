@@ -43,7 +43,7 @@ class communitiesActions extends sfActions
     $response = $this->getResponse();
     $response->setTitle($this->community->getName());
     
-    $this->forward404Unless($this->community);
+    $this->forward404Unless($this->community && $this->community->getSlug() == $request->getParameter('slug'));
   }
 
   

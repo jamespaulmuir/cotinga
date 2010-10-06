@@ -1,0 +1,1 @@
+<img class="preview" src="<?php echo sfConfig::get('app_dspace_url').'/retrieve/'.$bitstream->bitstream_id ?>"/>

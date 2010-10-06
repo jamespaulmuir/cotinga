@@ -31,7 +31,7 @@ class collectionsActions extends sfActions
 
     $this->collection = Doctrine::getTable('Collection')->find(array($request->getParameter('collection_id')));
 
-    
+    $this->forward404Unless($this->collection && $this->collection->getSlug() == $request->getParameter('slug'));
 
     $this->pager = new sfDoctrinePager('Item', 20);
     $this->pager->setQuery(
@@ -46,7 +46,7 @@ class collectionsActions extends sfActions
     $response = $this->getResponse();
     $response->setTitle($this->collection->getName());
 
-    $this->forward404Unless($this->collection);
+    
   }
 
   

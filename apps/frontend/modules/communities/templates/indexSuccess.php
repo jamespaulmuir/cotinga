@@ -1,7 +1,7 @@
 <h1>Communities</h1>
 <ul class="list-detail">
     <?php foreach ($communitys as $community): ?>
-<li><a href="<?php echo url_for('communities/show?community_id='.$community->getCommunityId()) ?>">
+<li><a href="<?php echo url_for('@community_seo?slug='.$community->getSlug().'&community_id='.$community->getCommunityId()) ?>">
         <?php echo $community->getName() ?>
     </a>
 </li>
